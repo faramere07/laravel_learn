@@ -18,6 +18,7 @@ class CreateUsernameTable extends Migration
             $table->string('username');
         });
     }
+    
 
     /**
      * Reverse the migrations.
