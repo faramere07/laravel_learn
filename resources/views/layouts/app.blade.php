@@ -27,7 +27,7 @@
 				<a href="" class="p-4 text-lg">Login</a>
 			</li>
 			<li>
-				<a href="" class="p-4 text-lg">Register</a>
+				<a href="{{ route('register') }}" class="p-4 text-lg">Register</a>
 			</li>
 			<li>
 				<a href="" class="p-4 text-lg">Logout</a>
