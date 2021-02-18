@@ -11,10 +11,10 @@
           <div
             class="w-full mx-autp items-center flex justify-between md:flex-no-wrap flex-wrap md:px-10 px-4"
           >
-            <a
-              class="text-white text-sm uppercase hidden mt-8 lg:inline-block font-semibold"
-              href="{{ route('adminHome') }}"
-              >Dashboard</a
+            <p
+              class="text-white text-lg uppercase hidden mt-8 lg:inline-block font-semibold"
+              
+              >Dashboard</p
             >
 
           </div>
