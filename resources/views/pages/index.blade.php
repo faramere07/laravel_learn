@@ -47,7 +47,7 @@
           <div class="items-center flex flex-wrap">
             <div class="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
               <div class="pr-12">
-                <h1 class="text-white font-semibold text-5xl">
+                <h1 class="text-white font-sans font-semibold text-6xl">
                   Welcome to WECANS!
                 </h1>
                 <p class="mt-4 text-lg text-gray-300">
@@ -63,7 +63,8 @@
       <section class="pb-20 bg-gray-300 -mt-24">
         <div class="container mx-auto px-4">
           <div class="flex flex-wrap">
-            <div class="lg:pt-12 pt-6 w-full md:w-4/12 px-4 text-center">
+            <div data-aos="fade-up"
+     data-aos-duration="1000" class="lg:pt-12 pt-6 w-full md:w-4/12 px-4 text-center">
               <div
                 class="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg"
               >
@@ -80,7 +81,8 @@
                 </div>
               </div>
             </div>
-            <div class="w-full md:w-4/12 px-4 text-center">
+            <div data-aos="fade-up"
+     data-aos-duration="1000" class="w-full md:w-4/12 px-4 text-center">
               <div
                 class="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg"
               >
@@ -97,7 +99,8 @@
                 </div>
               </div>
             </div>
-            <div class="pt-6 w-full md:w-4/12 px-4 text-center">
+            <div data-aos="fade-up"
+     data-aos-duration="1000" class="pt-6 w-full md:w-4/12 px-4 text-center">
               <div
                 class="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg"
               >
@@ -141,7 +144,7 @@
                 >Get started and be a member now!</a
               >
             </div>
-            <div class="w-full md:w-4/12 px-4 mr-auto ml-auto">
+            <div class="w-full md:w-4/12 px-4 mr-auto ml-auto" data-aos="fade-left" data-aos-duration="1500">
               <div
                 class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg bg-white-600"
               >
@@ -198,7 +201,7 @@
         </div>
         <div class="container mx-auto px-4">
           <div class="items-center flex flex-wrap">
-            <div class="w-full md:w-4/12 ml-auto mr-auto px-4">
+            <div class="w-full md:w-4/12 ml-auto mr-auto px-4" data-aos="fade-right" data-aos-duration="1000">
               <img
                 alt="..."
                 class="max-w-full rounded-lg"
@@ -313,11 +316,11 @@
             </div>
           </div>
           <div class="flex flex-wrap">
-            <div class="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
+            <div class="w-full md:w-6/12 lg:w-2/12 lg:mb-0 mb-12 px-4" data-aos="fade-up-right" data-aos-duration="1000">
               <div class="px-6">
                 <img
                   alt="..."
-                  src="assets/img/team-1-800x800.jpg"
+                  src="{{ asset('assets/img/dustin.png') }}"
                   class="shadow-lg rounded-full max-w-full mx-auto"
                   style="max-width: 120px;"
                 />
@@ -343,18 +346,18 @@
                 </div>
               </div>
             </div>
-            <div class="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
+            <div class="w-full md:w-6/12 lg:w-2/12 lg:mb-0 mb-12 px-4" data-aos="fade-down-right" data-aos-duration="1000">
               <div class="px-6">
                 <img
                   alt="..."
-                  src="./assets/img/team-2-800x800.jpg"
+                  src="{{ asset('assets/img/neil.jpg') }}"
                   class="shadow-lg rounded-full max-w-full mx-auto"
                   style="max-width: 120px;"
                 />
                 <div class="pt-6 text-center">
-                  <h5 class="text-xl font-bold">Wecans Roselle</h5>
+                  <h5 class="text-xl font-bold">Wecans Neil</h5>
                   <p class="mt-1 text-sm text-gray-500 uppercase font-semibold">
-                    Human Resources
+                    Technical support
                   </p>
                   <div class="mt-6">
                     <button
@@ -372,11 +375,45 @@
                 </div>
               </div>
             </div>
-            <div class="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
+            <div class="w-full md:w-6/12 lg:w-2/12 lg:mb-0 mb-12 px-4" data-aos="fade-up" data-aos-duration="1000">
               <div class="px-6">
                 <img
                   alt="..."
-                  src="./assets/img/team-3-800x800.jpg"
+                  src="{{ asset('assets/img/gm.png') }}"
+                  class="shadow-lg rounded-full max-w-full mx-auto"
+                  style="max-width: 120px;"
+                />
+                <div class="pt-6 text-center">
+                  <h5 class="text-xl font-bold">Wecans GM</h5>
+                  <p class="mt-1 text-sm text-gray-500 uppercase font-semibold">
+                    Graphics Artist
+                  </p>
+                  <div class="mt-6">
+                    <button
+                      class="bg-red-600 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+                      type="button"
+                    >
+                      <i class="fab fa-google"></i></button
+                    ><button
+                      class="bg-blue-400 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+                      type="button"
+                    >
+                      <i class="fab fa-twitter"></i></button
+                    ><button
+                      class="bg-gray-800 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+                      type="button"
+                    >
+                      <i class="fab fa-instagram"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="w-full md:w-6/12 lg:w-2/12 lg:mb-0 mb-12 px-4" data-aos="fade-down" data-aos-duration="1000">
+              <div class="px-6">
+                <img
+                  alt="..."
+                  src="{{ asset('assets/img/chum.png') }}"
                   class="shadow-lg rounded-full max-w-full mx-auto"
                   style="max-width: 120px;"
                 />
@@ -406,11 +443,45 @@
                 </div>
               </div>
             </div>
-            <div class="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
+            <div class="w-full md:w-6/12 lg:w-2/12 lg:mb-0 mb-12 px-4" data-aos="fade-down-left" data-aos-duration="1000">
               <div class="px-6">
                 <img
                   alt="..."
-                  src="./assets/img/team-4-470x470.png"
+                  src="{{ asset('assets/img/roselle.png') }}"
+                  class="shadow-lg rounded-full max-w-full mx-auto"
+                  style="max-width: 120px;"
+                />
+                <div class="pt-6 text-center">
+                  <h5 class="text-xl font-bold">Wecans Roselle</h5>
+                  <p class="mt-1 text-sm text-gray-500 uppercase font-semibold">
+                    Human Resources
+                  </p>
+                  <div class="mt-6">
+                    <button
+                      class="bg-red-600 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+                      type="button"
+                    >
+                      <i class="fab fa-google"></i></button
+                    ><button
+                      class="bg-blue-400 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+                      type="button"
+                    >
+                      <i class="fab fa-twitter"></i></button
+                    ><button
+                      class="bg-gray-800 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+                      type="button"
+                    >
+                      <i class="fab fa-instagram"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="w-full md:w-6/12 lg:w-2/12 lg:mb-0 mb-12 px-4" data-aos="fade-up-left" data-aos-duration="1000">
+              <div class="px-6">
+                <img
+                  alt="..."
+                  src="{{ asset('assets/img/jack.png') }}"
                   class="shadow-lg rounded-full max-w-full mx-auto"
                   style="max-width: 120px;"
                 />
@@ -466,11 +537,11 @@
         <div class="container mx-auto px-4 lg:pt-24 lg:pb-64">
           <div class="flex flex-wrap text-center justify-center">
             <div class="w-full lg:w-6/12 px-4">
-              <h2 class="text-4xl font-semibold text-white">Build something with Wecans!</h2>
+              <h2 class="text-4xl font-semibold text-white">Working with us is a pleasure!</h2>
               <p class="text-lg leading-relaxed mt-4 mb-4 text-gray-500">
                 As our company grows, We also want our employees to grow with us. We ensure that the employees will have a comfortable and safe 
-                workplace while working with us. We also provide benefits such as:
-              </p>
+                workplace while working with us.</p><p class="text-2xl font-semibold leading-relaxed mt-4 mb-4 text-gray-500"> We also provide benefits such as:</p>
+              
             </div>
           </div>
           <div class="flex flex-wrap mt-12 justify-center">
@@ -606,22 +677,17 @@
               Find us on any of these platforms, we respond within 1-2 business days.
             </h5>
             <div class="mt-6">
-              <button
-                class="bg-white text-black-400 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2 p-3"
-                type="button"
-              >
-                <i class="flex fab fa-instagram"></i></button
-              ><button
+              <a href="mailto:EMAILADDRESS" class="bg-white text-gray-700 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2 p-3"
+                type="button">
+                <i class="flex fas fa-envelope"></i></a>
+                <button
                 class="bg-white text-blue-600 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2 p-3"
-                type="button"
-              >
-                <i class="flex fab fa-facebook-square"></i></button
-              ><button
+                type="button">
+                <i class="flex fab fa-facebook-square"></i></button>
+                <button
                 class="bg-white text-red-600 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2 p-3"
-                type="button"
-              >
-                <i class="flex fab fa-youtube"></i></button
-              >
+                type="button">
+                <i class="flex fab fa-youtube"></i></button>
             </div>
           </div>
           <div class="w-full lg:w-6/12 px-4">
@@ -704,12 +770,12 @@
 
       </div>
     </footer>
-
+<script src="{{ asset('js/aos.js') }}"></script>
 <script>
 //Get the button
 var mybutton = document.getElementById("myBtn");
 
-// When the user scrolls down 20px from the top of the document, show the button
+// When the user scrolls down 50px from the top of the document, show the button
 window.onscroll = function() {scrollFunction()};
 
 function scrollFunction() {
@@ -725,5 +791,10 @@ function topFunction() {
   document.body.scrollTop = 0;
   document.documentElement.scrollTop = 0;
 }
+
+//Animate on Scroll initialization
+AOS.init();
+
+
 </script>
 @endsection

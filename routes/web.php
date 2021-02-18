@@ -38,6 +38,17 @@ Route::get('/managerHome', [ManagerController::class, 'home'])->name('managerHom
 Route::get('/applicantDashboard', [ApplicantController::class, 'dashboard'])->name('applicantDashboard');
 Route::get('/applicantHome', [ApplicantController::class, 'home'])->name('applicantHome');
 
+
+//index
 Route::get('/', function () {
 	return view('pages.index');
 })->name('index')->middleware('guest');
+
+Route::get('/gallery', function () {
+	return view('pages.gallery');
+})->name('gallery')->middleware('guest');
+
+Route::get('/faq', function () {
+	return view('pages.faq');
+})->name('faq')->middleware('guest');
+
