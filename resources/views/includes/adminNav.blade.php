@@ -48,7 +48,7 @@
               <li class="items-center">
                 <a
                   class="text-gray-800 hover:text-pink-600 text-xs uppercase py-3 font-bold block"
-                  href="#/profile"
+                  href="{{ route('adminManagers') }}"
                   ><i class="fas fa-user-circle text-gray-500 mr-2 text-sm"></i>
                   Managers</a>
               </li>
@@ -72,9 +72,9 @@
               </li>
               <li>
               	<form action="{{ route('logout') }}" method="post">
-						@csrf
-						<button  class="text-red-500 hover:text-pink-600  text-sm block mb-4 no-underline font-semibold" type="submit"><i class="fas fa-power-off  mr-2 text-red-500 text-base"></i></i>Logout</button>
-					</form>
+                  @csrf
+                  <button  class="text-red-500 hover:text-pink-600  text-sm block mb-4 no-underline font-semibold" type="submit"><i class="fas fa-power-off  mr-2 text-red-500 text-base"></i></i>Logout</button>
+                </form>
               </li>
             </ul>
           </div>

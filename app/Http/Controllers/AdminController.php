@@ -20,4 +20,9 @@ class AdminController extends Controller
     {
     	return view('ADMIN.home');
     }
+
+    public function managers()
+    {
+    	return view('ADMIN.managers');
+    }
 }

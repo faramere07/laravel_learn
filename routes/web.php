@@ -29,6 +29,7 @@ Route::post('/logout', [LogoutController::class, 'logout'])->name('logout');
 //admin
 Route::get('/adminDashboard', [AdminController::class, 'dashboard'])->name('adminDashboard');
 Route::get('/adminHome', [AdminController::class, 'home'])->name('adminHome');
+Route::get('/adminManagers', [AdminController::class, 'managers'])->name('adminManagers');
 
 //manager
 Route::get('/managerDashboard', [ManagerController::class, 'dashboard'])->name('managerDashboard');
