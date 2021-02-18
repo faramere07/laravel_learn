@@ -1,13 +1,42 @@
 @extends('layouts.app')
 
 @section('content')
+<style type="text/css">
+
+	html {
+  scroll-behavior: smooth;
+}
+	#myBtn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  background-color: red;
+  color: white;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 4px;
+}
+
+#myBtn:hover {
+  background-color: #555;
+}
+</style>
+<button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fas fa-chevron-up"></i></button>
+
+
+
       <div
         class="relative pt-14 pb-32 flex content-center items-center justify-center"
         style="min-height: 75vh;"
       >
         <div
           class="absolute top-0 w-full h-full bg-center bg-cover"
-          style='background-image: url("https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1267&amp;q=80");'
+          style='background-image: url("{{ asset("assets/img/header.jpg") }}");'
         >
           <span
             id="blackOverlay"
@@ -22,9 +51,8 @@
                   Welcome to WECANS!
                 </h1>
                 <p class="mt-4 text-lg text-gray-300">
-                  This is a simple example of a Landing Page you can build using
-                  Tailwind Starter Kit. It features multiple CSS components
-                  based on the Tailwindcss design system.
+                  This is the website for aspiring applicants who wants to work with us!
+                  Feel free to see what we can offer below
                 </p>
               </div>
             </div>
@@ -43,12 +71,11 @@
                   <div
                     class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-red-400"
                   >
-                    <i class="fas fa-award"></i>
+                    <i class="fas fa-wifi"></i>
                   </div>
-                  <h6 class="text-xl font-semibold">Awarded Agency</h6>
+                  <h6 class="text-xl font-semibold">Unrestricted Network</h6>
                   <p class="mt-2 mb-4 text-gray-600">
-                    Divide details about your product or agency work into parts.
-                    A paragraph describing a feature will be enough.
+                    Teachers can freely access their favourite websites such as Facebook, Youtube, and Netflix during their vacant time.
                   </p>
                 </div>
               </div>
@@ -61,12 +88,11 @@
                   <div
                     class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-blue-400"
                   >
-                    <i class="fas fa-retweet"></i>
+                    <i class="fas fa-mug-hot"></i>
                   </div>
-                  <h6 class="text-xl font-semibold">Free Revisions</h6>
+                  <h6 class="text-xl font-semibold">Unlimited Coffee</h6>
                   <p class="mt-2 mb-4 text-gray-600">
-                    Keep you user engaged by providing meaningful information.
-                    Remember that by this time, the user is curious.
+                    Wecans offers unlimited coffee to teachers to boost their energy.
                   </p>
                 </div>
               </div>
@@ -79,12 +105,11 @@
                   <div
                     class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-green-400"
                   >
-                    <i class="fas fa-fingerprint"></i>
+                    <i class="fas fa-check"></i>
                   </div>
                   <h6 class="text-xl font-semibold">Verified Company</h6>
                   <p class="mt-2 mb-4 text-gray-600">
-                    Write a few lines about each one. A paragraph describing a
-                    feature will be enough. Keep you user engaged!
+                    We have been teaching students passionately for almost 10 years now! Be a part of our growing company
                   </p>
                 </div>
               </div>
@@ -95,24 +120,20 @@
               <div
                 class="text-gray-600 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-gray-100"
               >
-                <i class="fas fa-user-friends text-xl"></i>
+                <i class="fas fa-fingerprint text-2xl"></i>
               </div>
               <h3 class="text-3xl mb-2 font-semibold leading-normal">
-                Working with us is a pleasure
+                OUR MISSION
               </h3>
               <p
                 class="text-lg font-light leading-relaxed mt-4 mb-4 text-gray-700"
               >
-                Don't let your uses guess by attaching tooltips and popoves to
-                any element. Just make sure you enable them first via
-                JavaScript.
+                To serve as a bridge for learners to reach their dream by providing quality education and to teach with passion, dedication and patience.
               </p>
               <p
                 class="text-lg font-light leading-relaxed mt-0 mb-4 text-gray-700"
               >
-                The kit comes with three pre-built pages to help you get started
-                faster. You can change the text and images and you're good to
-                go. Just make sure you enable them first via JavaScript.
+                To be an institution to encompass corporate values with the goal to promote language as a means of building learner's competence.
               </p>
               <a
                 href="{{ route('register') }}"
@@ -122,11 +143,11 @@
             </div>
             <div class="w-full md:w-4/12 px-4 mr-auto ml-auto">
               <div
-                class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg bg-pink-600"
+                class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg bg-white-600"
               >
                 <img
                   alt="..."
-                  src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1051&amp;q=80"
+                  src="{{ asset('assets/img/card-header.jpg') }}"
                   class="w-full align-middle rounded-t-lg"
                 />
                 <blockquote class="relative p-8 mb-4">
@@ -139,16 +160,15 @@
                   >
                     <polygon
                       points="-30,95 583,95 583,65"
-                      class="text-pink-600 fill-current"
+                      class="text-blue-600 fill-current"
                     ></polygon>
                   </svg>
-                  <h4 class="text-xl font-bold text-white">
-                    Top Notch Services
+                  <h4 class="text-2xl font-bold text-gray-600 flex justify-center">
+                    OUR VISION
                   </h4>
-                  <p class="text-md font-light mt-2 text-white">
-                    The Arctic Ocean freezes every winter and much of the
-                    sea-ice then thaws every summer, and that process will
-                    continue whatever happens.
+                  <p class="text-base font-light mt-2 text-gray-600">
+                    We believe that this institution will become the leader of online teaching and
+                     that its employees will enjoy a stress-free atmosphere in the workplace.
                   </p>
                 </blockquote>
               </div>
@@ -181,35 +201,34 @@
             <div class="w-full md:w-4/12 ml-auto mr-auto px-4">
               <img
                 alt="..."
-                class="max-w-full rounded-lg shadow-lg"
-                src="https://images.unsplash.com/photo-1555212697-194d092e3b8f?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=634&amp;q=80"
+                class="max-w-full rounded-lg"
+                src="{{ asset('assets/img/grow.jpg') }}"
               />
             </div>
             <div class="w-full md:w-5/12 ml-auto mr-auto px-4">
               <div class="md:pr-12">
                 <div
-                  class="text-pink-600 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-pink-300"
+                  class="text-green-600 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-green-300"
                 >
                   <i class="fas fa-rocket text-xl"></i>
                 </div>
-                <h3 class="text-3xl font-semibold">A growing company</h3>
+                <h3 class="text-3xl font-semibold">We keep growing!</h3>
                 <p class="mt-4 text-lg leading-relaxed text-gray-600">
-                  The extension comes with three pre-built pages to help you get
-                  started faster. You can change the text and images and you're
-                  good to go.
+                  We believe that our success is your success too! We offer added benefits within the company to help our employees
+                  feel comfortable and secure while working in our company. We have:
                 </p>
                 <ul class="list-none mt-6">
                   <li class="py-2">
                     <div class="flex items-center">
                       <div>
                         <span
-                          class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-pink-600 bg-pink-200 mr-3"
-                          ><i class="fas fa-fingerprint"></i
+                          class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-green-600 bg-green-200 mr-3"
+                          ><i class="fas fa-tshirt"></i
                         ></span>
                       </div>
                       <div>
                         <h4 class="text-gray-600">
-                          Carefully crafted components
+                          No Dress code - Feel free to express yourself in any way to want
                         </h4>
                       </div>
                     </div>
@@ -218,12 +237,11 @@
                     <div class="flex items-center">
                       <div>
                         <span
-                          class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-pink-600 bg-pink-200 mr-3"
-                          ><i class="fab fa-html5"></i
-                        ></span>
+                          class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-green-600 bg-green-200 mr-3"
+                          ><i class="fas fa-utensils"></i></span>
                       </div>
                       <div>
-                        <h4 class="text-gray-600">Amazing page examples</h4>
+                        <h4 class="text-gray-600">Free Meals (Lunch or Dinner)</h4>
                       </div>
                     </div>
                   </li>
@@ -231,12 +249,50 @@
                     <div class="flex items-center">
                       <div>
                         <span
-                          class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-pink-600 bg-pink-200 mr-3"
-                          ><i class="far fa-paper-plane"></i
+                          class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-green-600 bg-green-200 mr-3"
+                          ><i class="fas fa-dumbbell"></i
                         ></span>
                       </div>
                       <div>
-                        <h4 class="text-gray-600">Dynamic components</h4>
+                        <h4 class="text-gray-600">Fitness Facility - For those who are health conscious.</h4>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="py-2">
+                    <div class="flex items-center">
+                      <div>
+                        <span
+                          class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-green-600 bg-green-200 mr-3"
+                          ><i class="fas fa-bed"></i
+                        ></span>
+                      </div>
+                      <div>
+                        <h4 class="text-gray-600">Bunk Beds - Feel free to take a rest while on your vacant time</h4>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="py-2">
+                    <div class="flex items-center">
+                      <div>
+                        <span
+                          class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-green-600 bg-green-200 mr-3"
+                          ><i class="fab fa-playstation"></i
+                        ></span>
+                      </div>
+                      <div>
+                        <h4 class="text-gray-600">Playroom - a playroom for our teachers children while they wait</h4>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="py-2">
+                    <div class="flex items-center">
+                      <div>
+                        <span
+                          class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-green-600 bg-green-200 mr-3"
+                          ><i class="fas fa-capsules"></i></span>
+                      </div>
+                      <div>
+                        <h4 class="text-gray-600">Common Medicines - Medicines are provided when needed for free</h4>
                       </div>
                     </div>
                   </li>
@@ -252,9 +308,7 @@
             <div class="w-full lg:w-6/12 px-4">
               <h2 class="text-4xl font-semibold">Meet the team!</h2>
               <p class="text-lg leading-relaxed m-4 text-gray-600">
-                According to the National Oceanic and Atmospheric
-                Administration, Ted, Scambos, NSIDClead scentist, puts the
-                potentially record maximum.
+                Meet the managers and the owner of Wecans!
               </p>
             </div>
           </div>
@@ -268,9 +322,9 @@
                   style="max-width: 120px;"
                 />
                 <div class="pt-6 text-center">
-                  <h5 class="text-xl font-bold">Ryan Tompson</h5>
+                  <h5 class="text-xl font-bold">Wecans Dustin</h5>
                   <p class="mt-1 text-sm text-gray-500 uppercase font-semibold">
-                    Web Developer
+                    IT Manager
                   </p>
                   <div class="mt-6">
                     <button
@@ -298,9 +352,9 @@
                   style="max-width: 120px;"
                 />
                 <div class="pt-6 text-center">
-                  <h5 class="text-xl font-bold">Romina Hadid</h5>
+                  <h5 class="text-xl font-bold">Wecans Roselle</h5>
                   <p class="mt-1 text-sm text-gray-500 uppercase font-semibold">
-                    Marketing Specialist
+                    Human Resources
                   </p>
                   <div class="mt-6">
                     <button
@@ -327,9 +381,9 @@
                   style="max-width: 120px;"
                 />
                 <div class="pt-6 text-center">
-                  <h5 class="text-xl font-bold">Alexa Smith</h5>
+                  <h5 class="text-xl font-bold">Wecans Chum</h5>
                   <p class="mt-1 text-sm text-gray-500 uppercase font-semibold">
-                    UI/UX Designer
+                    Graphics Artist
                   </p>
                   <div class="mt-6">
                     <button
@@ -361,7 +415,7 @@
                   style="max-width: 120px;"
                 />
                 <div class="pt-6 text-center">
-                  <h5 class="text-xl font-bold">Jenna Kardi</h5>
+                  <h5 class="text-xl font-bold">Wecans Jack</h5>
                   <p class="mt-1 text-sm text-gray-500 uppercase font-semibold">
                     Founder and CEO
                   </p>
@@ -412,11 +466,10 @@
         <div class="container mx-auto px-4 lg:pt-24 lg:pb-64">
           <div class="flex flex-wrap text-center justify-center">
             <div class="w-full lg:w-6/12 px-4">
-              <h2 class="text-4xl font-semibold text-white">Build something</h2>
+              <h2 class="text-4xl font-semibold text-white">Build something with Wecans!</h2>
               <p class="text-lg leading-relaxed mt-4 mb-4 text-gray-500">
-                Put the potentially record low maximum sea ice extent tihs year
-                down to low ice. According to the National Oceanic and
-                Atmospheric Administration, Ted, Scambos.
+                As our company grows, We also want our employees to grow with us. We ensure that the employees will have a comfortable and safe 
+                workplace while working with us. We also provide benefits such as:
               </p>
             </div>
           </div>
@@ -428,11 +481,10 @@
                 <i class="fas fa-medal text-xl"></i>
               </div>
               <h6 class="text-xl mt-5 font-semibold text-white">
-                Excelent Services
+                HDMF
               </h6>
               <p class="mt-2 mb-4 text-gray-500">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
+                Home Development Mutual Fund
               </p>
             </div>
             <div class="w-full lg:w-3/12 px-4 text-center">
@@ -442,11 +494,10 @@
                 <i class="fas fa-poll text-xl"></i>
               </div>
               <h5 class="text-xl mt-5 font-semibold text-white">
-                Grow your market
+                PHIC
               </h5>
               <p class="mt-2 mb-4 text-gray-500">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
+                Philippine Health Insurance Corporation
               </p>
             </div>
             <div class="w-full lg:w-3/12 px-4 text-center">
@@ -455,10 +506,9 @@
               >
                 <i class="fas fa-lightbulb text-xl"></i>
               </div>
-              <h5 class="text-xl mt-5 font-semibold text-white">Launch time</h5>
+              <h5 class="text-xl mt-5 font-semibold text-white">SSS</h5>
               <p class="mt-2 mb-4 text-gray-500">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
+                Social Security System
               </p>
             </div>
           </div>
@@ -553,30 +603,25 @@
           <div class="w-full lg:w-6/12 px-4">
             <h4 class="text-3xl font-semibold">Let's keep in touch!</h4>
             <h5 class="text-lg mt-0 mb-2 text-gray-700">
-              Find us on any of these platforms, we respond 1-2 business days.
+              Find us on any of these platforms, we respond within 1-2 business days.
             </h5>
             <div class="mt-6">
               <button
-                class="bg-white text-blue-400 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2 p-3"
+                class="bg-white text-black-400 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2 p-3"
                 type="button"
               >
-                <i class="flex fab fa-twitter"></i></button
+                <i class="flex fab fa-instagram"></i></button
               ><button
                 class="bg-white text-blue-600 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2 p-3"
                 type="button"
               >
                 <i class="flex fab fa-facebook-square"></i></button
               ><button
-                class="bg-white text-pink-400 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2 p-3"
+                class="bg-white text-red-600 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2 p-3"
                 type="button"
               >
-                <i class="flex fab fa-dribbble"></i></button
-              ><button
-                class="bg-white text-gray-900 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2 p-3"
-                type="button"
+                <i class="flex fab fa-youtube"></i></button
               >
-                <i class="flex fab fa-github"></i>
-              </button>
             </div>
           </div>
           <div class="w-full lg:w-6/12 px-4">
@@ -660,4 +705,25 @@
       </div>
     </footer>
 
+<script>
+//Get the button
+var mybutton = document.getElementById("myBtn");
+
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+</script>
 @endsection
