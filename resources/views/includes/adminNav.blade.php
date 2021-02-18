@@ -28,24 +28,29 @@
                   class="text-gray-800 hover:text-pink-600 text-xs uppercase py-3 font-bold block"
                   href="{{ route('adminHome') }}"
                   ><i class="fas fa-tv opacity-75 mr-2 text-sm"></i>
-                  Dashboard</a
-                >
+                  Dashboard</a>
               </li>
               <li class="items-center">
                 <a
                   class="text-gray-800 hover:text-pink-600 text-xs uppercase py-3 font-bold block"
                   href="{{ route('adminHome') }}"
                   ><i class="fas fa-newspaper text-gray-500 mr-2 text-sm"></i>
-                  Landing Page</a
+                 Applications</a
                 >
               </li>
               <li class="items-center">
                 <a
                   class="text-gray-800 hover:text-pink-600 text-xs uppercase py-3 font-bold block"
                   href="#/profile"
+                  ><i class="fas fa-door-open text-gray-500 mr-2 text-sm"></i>
+                  Job Openings</a>
+              </li>
+              <li class="items-center">
+                <a
+                  class="text-gray-800 hover:text-pink-600 text-xs uppercase py-3 font-bold block"
+                  href="#/profile"
                   ><i class="fas fa-user-circle text-gray-500 mr-2 text-sm"></i>
-                  Create Account</a
-                >
+                  Managers</a>
               </li>
             </ul>
             <hr class="my-4 md:min-w-full" />

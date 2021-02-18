@@ -23,6 +23,7 @@ class RegisterController extends Controller
     {
     	$this->validate($request, [
     		'name' => 'required|max:255',
+			'gender' => 'required|max:1|min:1',
     		'username' => 'required|max:255|unique:users',
     		'email' => 'required|max:255|email|unique:users',
     		'password' => 'required|confirmed|min:8',
@@ -34,6 +35,7 @@ class RegisterController extends Controller
     		'email' => $request->email,
     		'password' => Hash::make($request->password),
     		'userType' => $request->userType,
+			'gender' => $request->gender,
     	]);
 
     	auth()->attempt($request->only('email','password'));

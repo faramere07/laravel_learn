@@ -40,18 +40,44 @@
                         placeholder="Full Name" />
 
                         
+                    
+
+                    <div class="grid grid-rows-3 grid-flow-col">
+                    <div class="row-span-3">
                     @error('username')
                         	<div class="text-red-500 mt-2 text-sm">
                         		{{ $message }}
                         	</div>
                     @enderror
+                        </div>
+                        <div class="row-span-3 ...">
+                        @error('gender')
+                        	<div class="text-red-500 mt-2 text-sm">
+                        		{{ $message }}
+                        	</div>
+                    @enderror
+                        </div>
+                    </div> 
 
-                    <input 
-                        type="text"
-                        class="block border border-grey-light w-full p-3 rounded mb-4"
-                        name="username"
-                        value="{{ old('username') }}" 
-                        placeholder="Username" />    
+
+                    <div class="grid grid-rows-3 grid-flow-col gap-4">
+                    <div class="row-span-3">
+                        <input 
+                            type="text"
+                            class="block border border-grey-light w-full p-3 rounded mb-4"
+                            name="username"
+                            value="{{ old('username') }}" 
+                            placeholder="Username" />   
+                        </div>
+                        <div class="row-span-3 ...">
+
+                    <select class="block  border border-grey-light text-gray-500 w-full p-3 rounded mb-4" name="gender" id="gender">
+                      <option disabled selected value="">Select Gender</option>
+                      <option value="M">Male</option>
+                      <option value="F">Female</option>
+                    </select>
+                        </div>
+                    </div> 
 
                     @error('email')
                         	<div class="text-red-500 mt-2 text-sm">

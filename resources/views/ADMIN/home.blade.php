@@ -31,10 +31,10 @@
                       <div class="flex flex-wrap">
                         <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
                           <h5 class="text-gray-500 uppercase font-bold text-xs">
-                            Traffic
+                            Pending Applications
                           </h5>
                           <span class="font-semibold text-xl text-gray-800">
-                            350,897
+                            350
                           </span>
                         </div>
                         <div class="relative w-auto pl-4 flex-initial">
@@ -60,7 +60,7 @@
                       <div class="flex flex-wrap">
                         <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
                           <h5 class="text-gray-500 uppercase font-bold text-xs">
-                            New users
+                            New Applicants
                           </h5>
                           <span class="font-semibold text-xl text-gray-800">
                             2,356
@@ -68,7 +68,7 @@
                         </div>
                         <div class="relative w-auto pl-4 flex-initial">
                           <div class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 shadow-lg rounded-full bg-green-500">
-                            <i class="fas fa-user"></i>
+                          <i class="fas fa-user-plus"></i>
                           </div>
                         </div>
                       </div>
@@ -89,7 +89,7 @@
                       <div class="flex flex-wrap">
                         <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
                           <h5 class="text-gray-500 uppercase font-bold text-xs">
-                            Sales
+                            Pending Tutor applications
                           </h5>
                           <span class="font-semibold text-xl text-gray-800">
                             924
@@ -118,10 +118,10 @@
                       <div class="flex flex-wrap">
                         <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
                           <h5 class="text-gray-500 uppercase font-bold text-xs">
-                            Performance
+                            Pending IT applications
                           </h5>
                           <span class="font-semibold text-xl text-gray-800">
-                            49,65%
+                            5
                           </span>
                         </div>
                         <div class="relative w-auto pl-4 flex-initial">
@@ -142,6 +142,7 @@
                   </div>
                 </div>
               </div>
+              
             </div>
           </div>
         </div>
