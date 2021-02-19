@@ -105,20 +105,20 @@
                     @if($activeOpenings->count())
                         @foreach ($activeOpenings as $opening)
                         <tr>
-                        <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-sm whitespace-no-wrap p-4 text-left">
+                        <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-left">
                           {{ $opening->title }}
                         </th>
-                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-sm whitespace-no-wrap p-4">
+                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
                         {{ $opening->startTime }} - {{ $opening->endTime }}
                         </td>
-                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-sm whitespace-no-wrap p-4">
+                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
                         {{ Str::upper($opening->category) }}
                         </td>
-                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-sm whitespace-no-wrap p-4">
+                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
                           {{  number_format($opening->salary, 0, '.', ',') }}
                           
                         </td>
-                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-sm whitespace-no-wrap p-4">
+                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
                           {{ $opening->jobType }}
                         </td>
                         <td>
@@ -132,7 +132,7 @@
                         class="bg-gray-600 text-white active:bg-gray-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1"
                         type="button"
                         style="transition:all .15s ease">
-                        <i class="far fa-trash-alt m-2"></i>Close
+                        <i class="fas fa-door-closed m-2"></i>Close
                       </button>
                         </td>
                       </tr>
@@ -205,20 +205,20 @@
                     @if($inactiveOpenings->count())
                         @foreach ($inactiveOpenings as $opening)
                         <tr>
-                        <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-sm whitespace-no-wrap p-4 text-left">
+                        <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-left">
                           {{ $opening->title }}
                         </th>
-                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-sm whitespace-no-wrap p-4">
+                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
                         {{ $opening->startTime }} - {{ $opening->endTime }}
                         </td>
-                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-sm whitespace-no-wrap p-4">
+                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
                         {{ Str::upper($opening->category) }}
                         </td>
-                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-sm whitespace-no-wrap p-4">
+                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
                           {{  number_format($opening->salary, 0, '.', ',') }}
                           
                         </td>
-                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-sm whitespace-no-wrap p-4">
+                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
                           {{ $opening->jobType }}
                         </td>
                         <td>
@@ -232,7 +232,7 @@
                         class="bg-gray-600 text-white active:bg-gray-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1"
                         type="button"
                         style="transition:all .15s ease">
-                        <i class="far fa-trash-alt m-2"></i>Close
+                        <i class="fas fa-door-open m-2"></i>Open
                       </button>
                         </td>
                       </tr>
