@@ -35,7 +35,6 @@ Route::get('/managerDashboard', [ManagerController::class, 'dashboard'])->name('
 Route::get('/managerHome', [ManagerController::class, 'home'])->name('managerHome');
 
 //applicants
-Route::get('/applicantDashboard', [ApplicantController::class, 'dashboard'])->name('applicantDashboard');
 Route::get('/applicantHome', [ApplicantController::class, 'home'])->name('applicantHome');
 
 
