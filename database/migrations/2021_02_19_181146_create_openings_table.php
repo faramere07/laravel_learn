@@ -22,6 +22,7 @@ class CreateOpeningsTable extends Migration
             $table->string('description');
             $table->string('salary');
             $table->string('jobType');
+            $table->string('status');
             $table->timestamps();
         });
     }

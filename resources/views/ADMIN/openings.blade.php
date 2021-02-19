@@ -39,18 +39,19 @@
         </div>
         <div class="px-4 md:px-10 mx-auto w-full -m-28">
           <div class="flex flex-wrap">
-          <div class="w-full xl:w-12/12 mb-12 xl:mb-0 px-4">
+          <div class="w-full xl:w-12/12 mb-12 xl:mb-4 px-4">
               <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
                 <div class="rounded-t mb-0 px-4 py-3 border-0">
                   <div class="flex flex-wrap items-center">
                     <div class="relative w-full px-4 max-w-full flex-grow flex-1">
                       <h3 class="font-semibold text-base text-gray-800">
-                        Openings
+                        Openings - Active
+                        <i class="fas fa-check text-green-500"></i>
                       </h3>
                     </div>
                     <div class="relative w-full px-4 max-w-full flex-grow flex-1 text-right">
                       <button
-                        class="modal-open bg-transparent bg-indigo-500 text-white active:bg-indigo-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1"
+                        class="modal-open bg-transparent bg-gray-600 text-white active:bg-indigo-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1"
                         type="button"
                         style="transition:all .15s ease"
                       >
@@ -61,13 +62,13 @@
                 </div>
                 <div class="block w-full overflow-x-auto">
 
-                  @if (\Session::has('success'))
+                  @if (\Session::has('active'))
                   <div class="text-white px-6 py-4 border-0 relative bg-blue-500">
                     <span class="text-xl inline-block mr-5 align-middle">
                       <i class="fas fa-bell"></i>
                     </span>
                     <span class="inline-block align-middle mr-8">
-                      <p>{!! \Session::get('success') !!}</p>
+                      <p>{!! \Session::get('active') !!}</p>
                     </span>
                     <button class="absolute bg-transparent text-2xl font-semibold leading-none right-0 top-0 mt-4 mr-6 outline-none focus:outline-none" onclick="closeAlert(event)">
                       <span>×</span>
@@ -90,7 +91,7 @@
                           Category
                         </th>
                         <th class="px-6 bg-gray-100 text-gray-600 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-left">
-                          Salary
+                          Salary(Per month)
                         </th>
                         <th class="px-6 bg-gray-100 text-gray-600 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-left">
                           Type
@@ -101,116 +102,152 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-left">
-                          /argon/
+                    @if($activeOpenings->count())
+                        @foreach ($activeOpenings as $opening)
+                        <tr>
+                        <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-sm whitespace-no-wrap p-4 text-left">
+                          {{ $opening->title }}
                         </th>
-                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
-                          4,569
+                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-sm whitespace-no-wrap p-4">
+                        {{ $opening->startTime }} - {{ $opening->endTime }}
                         </td>
-                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
-                          340
+                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-sm whitespace-no-wrap p-4">
+                        {{ Str::upper($opening->category) }}
                         </td>
-                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
-                          <i class="fas fa-arrow-up text-green-500 mr-4"></i>
-                          46,53%
+                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-sm whitespace-no-wrap p-4">
+                          {{  number_format($opening->salary, 0, '.', ',') }}
+                          
+                        </td>
+                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-sm whitespace-no-wrap p-4">
+                          {{ $opening->jobType }}
+                        </td>
+                        <td>
+                      <button
+                        class="bg-gray-600 text-white active:bg-gray-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1"
+                        type="button"
+                        style="transition:all .15s ease">
+                        <i class="far fa-edit m-2"></i>Edit
+                      </button>
+                      <button
+                        class="bg-gray-600 text-white active:bg-gray-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1"
+                        type="button"
+                        style="transition:all .15s ease">
+                        <i class="far fa-trash-alt m-2"></i>Close
+                      </button>
                         </td>
                       </tr>
-                      <tr>
-                        <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-left">
-                          /argon/index.html
-                        </th>
-                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
-                          3,985
-                        </td>
-                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
-                          319
-                        </td>
-                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
-                          <i class="fas fa-arrow-down text-orange-500 mr-4"></i>
-                          46,53%
-                        </td>
-                      </tr>
-                      <tr>
-                        <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-left">
-                          /argon/charts.html
-                        </th>
-                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
-                          3,513
-                        </td>
-                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
-                          294
-                        </td>
-                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
-                          <i class="fas fa-arrow-down text-orange-500 mr-4"></i>
-                          36,49%
-                        </td>
-                      </tr>
-                      <tr>
-                        <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-left">
-                          /argon/tables.html
-                        </th>
-                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
-                          2,050
-                        </td>
-                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
-                          147
-                        </td>
-                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
-                          <i class="fas fa-arrow-up text-green-500 mr-4"></i>
-                          50,87%
-                        </td>
-                      </tr>
-                      <tr>
-                        <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-left">
-                          /argon/profile.html
-                        </th>
-                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
-                          1,795
-                        </td>
-                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
-                          190
-                        </td>
-                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
-                          <i class="fas fa-arrow-down text-red-500 mr-4"></i>
-                          46,53%
-                        </td>
-                      </tr>
-                      <tr>
-                        <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-left">
-                          /argon/profile.html
-                        </th>
-                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
-                          1,795
-                        </td>
-                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
-                          190
-                        </td>
-                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
-                          <i class="fas fa-arrow-down text-red-500 mr-4"></i>
-                          46,53%
-                        </td>
-                      </tr>
-                      <tr>
-                        <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-left">
-                          /argon/profile.html
-                        </th>
-                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
-                          1,795
-                        </td>
-                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
-                          190
-                        </td>
-                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
-                          <i class="fas fa-arrow-down text-red-500 mr-4"></i>
-                          46,53%
-                        </td>
-                      </tr>
+                      @endforeach
+                    @else
+                      <tr></tr>
+                    @endif
+
                     </tbody>
                   </table>
                 </div>
               </div>
             </div>
+
+            <div class="w-full xl:w-12/12 mb-12 xl:mb-4 px-4">
+              <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
+                <div class="rounded-t mb-0 px-4 py-3 border-0">
+                  <div class="flex flex-wrap items-center">
+                    <div class="relative w-full px-4 max-w-full flex-grow flex-1">
+                      <h3 class="font-semibold text-base text-gray-800">
+                        Openings - Closed
+                        <i class="fas fa-times text-red-500"></i>
+                      </h3>
+                    </div>
+
+                  </div>
+                </div>
+                <div class="block w-full overflow-x-auto">
+
+                  @if (\Session::has('inactive'))
+                  <div class="text-white px-6 py-4 border-0 relative bg-blue-500">
+                    <span class="text-xl inline-block mr-5 align-middle">
+                      <i class="fas fa-bell"></i>
+                    </span>
+                    <span class="inline-block align-middle mr-8">
+                      <p>{!! \Session::get('inactive') !!}</p>
+                    </span>
+                    <button class="absolute bg-transparent text-2xl font-semibold leading-none right-0 top-0 mt-4 mr-6 outline-none focus:outline-none" onclick="closeAlert(event)">
+                      <span>×</span>
+
+                    </button>
+                  </div>
+                  @endif
+
+                  <!-- Projects table -->
+                  <table class="items-center w-full bg-transparent border-collapse">
+                    <thead>
+                      <tr>
+                        <th class="px-6 bg-gray-100 text-gray-600 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-left">
+                          Job Title
+                        </th>
+                        <th class="px-6 bg-gray-100 text-gray-600 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-left">
+                          Sched
+                        </th>
+                        <th class="px-6 bg-gray-100 text-gray-600 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-left">
+                          Category
+                        </th>
+                        <th class="px-6 bg-gray-100 text-gray-600 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-left">
+                          Salary(Per month)
+                        </th>
+                        <th class="px-6 bg-gray-100 text-gray-600 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-left">
+                          Type
+                        </th>
+                        <th class="px-6 bg-gray-100 text-gray-600 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-left">
+                          Action
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    @if($inactiveOpenings->count())
+                        @foreach ($inactiveOpenings as $opening)
+                        <tr>
+                        <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-sm whitespace-no-wrap p-4 text-left">
+                          {{ $opening->title }}
+                        </th>
+                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-sm whitespace-no-wrap p-4">
+                        {{ $opening->startTime }} - {{ $opening->endTime }}
+                        </td>
+                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-sm whitespace-no-wrap p-4">
+                        {{ Str::upper($opening->category) }}
+                        </td>
+                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-sm whitespace-no-wrap p-4">
+                          {{  number_format($opening->salary, 0, '.', ',') }}
+                          
+                        </td>
+                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-sm whitespace-no-wrap p-4">
+                          {{ $opening->jobType }}
+                        </td>
+                        <td>
+                      <button
+                        class="bg-gray-600 text-white active:bg-gray-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1"
+                        type="button"
+                        style="transition:all .15s ease">
+                        <i class="far fa-edit m-2"></i>Edit
+                      </button>
+                      <button
+                        class="bg-gray-600 text-white active:bg-gray-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1"
+                        type="button"
+                        style="transition:all .15s ease">
+                        <i class="far fa-trash-alt m-2"></i>Close
+                      </button>
+                        </td>
+                      </tr>
+                      @endforeach
+                    @else
+                      <tr></tr>
+                    @endif
+
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+
           </div>
           <div class="flex flex-wrap mt-12">
             
@@ -247,6 +284,7 @@
                     <form action="{{ route('createOpening') }}" method="post">
                     @csrf
 
+                    <input type="hidden" value="active" name="status" />
                     @error('title')
                           <div class="text-red-500 mt-2 text-sm">
                             {{ $message }}
@@ -290,14 +328,14 @@
                             placeholder="End Time" />   
                         </div>
                         <div class="col-span-2">
-                        <label for="salary" class="text-gray-400 text-sm">Salary (Php)</label>
+                        <label for="salary" class="text-gray-400 text-sm">Salary per month</label>
                           <input 
                                 required
                                 type="number"
                                 class="block border border-grey-light w-full p-3 rounded mb-4"
                                 name="salary"
                                 value="{{ old('salary') }}" 
-                                placeholder="Salary" />   
+                                placeholder="Salary(₱)" />   
                             </div>
                           </div>
                     
@@ -311,8 +349,8 @@
                     <label for="category" class="text-gray-400 text-sm">Category</label>
                     <select required name="category" class="block border border-grey-light w-full p-3 rounded mb-4" id="category">
                       <option disabled selected value="">Select Category...</option>
-                      <option value="tutor">Tutor</option>
-                      <option value="it">IT</option>
+                      <option value="TUTOR">Tutor</option>
+                      <option value="IT">IT</option>
                     </select>
                   </div>
 
@@ -325,8 +363,8 @@
                     <label for="jobType" class="text-gray-400 text-sm">Job Type</label>
                     <select required name="jobType" class="block border border-grey-light w-full p-3 rounded mb-4" id="jobType">
                       <option disabled selected value="">Select Type...</option>
-                      <option value="tutor">Homebased</option>
-                      <option value="it">Office</option>
+                      <option value="homebased">Homebased</option>
+                      <option value="office">Office</option>
                     </select>
                   </div>
 

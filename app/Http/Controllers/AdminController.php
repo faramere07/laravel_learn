@@ -30,7 +30,14 @@ class AdminController extends Controller
 
     public function openings()
     {
-        return view('ADMIN.openings');
+        $activeOpenings = Openings::where('status', 'active')->get();
+
+        $inactiveOpenings = Openings::where('status', 'inactive')->get();
+
+        return view('ADMIN.openings', [
+            'activeOpenings' => $activeOpenings,
+            'inactiveOpenings' => $inactiveOpenings,
+        ]);
     }
 
     public function createOpening(Request $request)
@@ -43,6 +50,7 @@ class AdminController extends Controller
             'description' => 'required|max:255',
             'salary' => 'required|max:255',
             'jobType' => 'required|max:255',
+            'status' => 'required|max:255',
         ]);
 
         Openings::updateOrCreate([
@@ -53,8 +61,10 @@ class AdminController extends Controller
             'description' => $request->description,
             'jobType' => $request->jobType,
             'salary' => $request->salary,
+            'status' => $request->status,
         ]);
 
-        return redirect()->back()->with('success', 'Job Opening Succesfully created');  
+        return redirect()->back()->with('active', 'Job Opening Succesfully created');  
     }
+
 }

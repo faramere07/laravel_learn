@@ -17,5 +17,6 @@ class Openings extends Model
         'description',
         'salary',
         'jobType',
+        'status',
     ];
 }
