@@ -33,7 +33,7 @@
               <li class="items-center">
                 <a
                   class="text-gray-800 hover:text-pink-600 text-xs uppercase py-3 font-bold block"
-                  href="{{ route('adminHome') }}"
+                  href="{{ route('adminApplications') }}"
                   ><i class="fas fa-newspaper text-gray-500 mr-2 text-sm"></i>
                  Applications</a
                 >
@@ -41,7 +41,7 @@
               <li class="items-center">
                 <a
                   class="text-gray-800 hover:text-pink-600 text-xs uppercase py-3 font-bold block"
-                  href="#/profile"
+                  href="{{ route('adminOpenings') }}"
                   ><i class="fas fa-door-open text-gray-500 mr-2 text-sm"></i>
                   Job Openings</a>
               </li>
@@ -65,7 +65,7 @@
               <li class="inline-flex">
                 <a
                   class="text-gray-800 hover:text-pink-600  text-sm block mb-4 no-underline font-semibold"
-                  href="#/documentation/javascript/alerts"
+                  href="#"
                   ><i class="fab fa-js-square mr-2 text-gray-500 text-base"></i>
                   Javascript</a
                 >

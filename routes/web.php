@@ -21,22 +21,23 @@ use App\Http\Controllers\ApplicantController;
 //Auth routes
 Route::get('/register', [RegisterController::class, 'index'])->name('register');
 Route::post('/register', [RegisterController::class, 'store']);
-
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
 Route::post('/logout', [LogoutController::class, 'logout'])->name('logout');
 
 //admin
-Route::get('/adminDashboard', [AdminController::class, 'dashboard'])->name('adminDashboard');
-Route::get('/adminHome', [AdminController::class, 'home'])->name('adminHome');
-Route::get('/adminManagers', [AdminController::class, 'managers'])->name('adminManagers');
+Route::get('/admin/Home', [AdminController::class, 'home'])->name('adminHome');
+Route::get('/admin/Managers', [AdminController::class, 'managers'])->name('adminManagers');
+Route::get('/admin/Applications', [AdminController::class, 'applications'])->name('adminApplications');
+Route::get('/admin/Openings', [AdminController::class, 'openings'])->name('adminOpenings');
+Route::post('/createOpening', [AdminController::class, 'createOpening'])->name('createOpening');
 
 //manager
-Route::get('/managerDashboard', [ManagerController::class, 'dashboard'])->name('managerDashboard');
-Route::get('/managerHome', [ManagerController::class, 'home'])->name('managerHome');
+Route::get('/manager/Dashboard', [ManagerController::class, 'dashboard'])->name('managerDashboard');
+Route::get('/manager/Home', [ManagerController::class, 'home'])->name('managerHome');
 
 //applicants
-Route::get('/applicantHome', [ApplicantController::class, 'home'])->name('applicantHome');
+Route::get('/applicant/Home', [ApplicantController::class, 'home'])->name('applicantHome');
 
 Route::get('/', function () {
 	return view('pages.index');

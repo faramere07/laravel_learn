@@ -11,10 +11,10 @@
           <div
             class="w-full mx-autp items-center flex justify-between md:flex-no-wrap flex-wrap md:px-10 px-4"
           >
-            <p
-              class="text-white text-lg uppercase hidden mt-8 lg:inline-block font-semibold"
-              
-              >Dashboard</p
+            <a
+              class="text-white text-sm uppercase hidden mt-8 lg:inline-block font-semibold"
+              href="{{ route('adminHome') }}"
+              >Dashboard</a
             >
 
           </div>
@@ -31,10 +31,10 @@
                       <div class="flex flex-wrap">
                         <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
                           <h5 class="text-gray-500 uppercase font-bold text-xs">
-                            Pending Applications
+                            Traffic
                           </h5>
                           <span class="font-semibold text-xl text-gray-800">
-                            350
+                            350,897
                           </span>
                         </div>
                         <div class="relative w-auto pl-4 flex-initial">
@@ -60,7 +60,7 @@
                       <div class="flex flex-wrap">
                         <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
                           <h5 class="text-gray-500 uppercase font-bold text-xs">
-                            New Applicants
+                            New users
                           </h5>
                           <span class="font-semibold text-xl text-gray-800">
                             2,356
@@ -68,7 +68,7 @@
                         </div>
                         <div class="relative w-auto pl-4 flex-initial">
                           <div class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 shadow-lg rounded-full bg-green-500">
-                          <i class="fas fa-user-plus"></i>
+                            <i class="fas fa-user"></i>
                           </div>
                         </div>
                       </div>
@@ -89,7 +89,7 @@
                       <div class="flex flex-wrap">
                         <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
                           <h5 class="text-gray-500 uppercase font-bold text-xs">
-                            Pending Tutor applications
+                            Sales
                           </h5>
                           <span class="font-semibold text-xl text-gray-800">
                             924
@@ -118,10 +118,10 @@
                       <div class="flex flex-wrap">
                         <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
                           <h5 class="text-gray-500 uppercase font-bold text-xs">
-                            Pending IT applications
+                            Performance
                           </h5>
                           <span class="font-semibold text-xl text-gray-800">
-                            5
+                            49,65%
                           </span>
                         </div>
                         <div class="relative w-auto pl-4 flex-initial">
@@ -142,11 +142,10 @@
                   </div>
                 </div>
               </div>
-              
             </div>
           </div>
         </div>
-        <div class="px-4 md:px-10 mx-auto w-full -m-24">
+        <div class="px-4 md:px-10 mx-auto w-full -m-28">
           <div class="flex flex-wrap">
             <div class="w-full xl:w-8/12 mb-12 xl:mb-0 px-4">
               <div
@@ -212,13 +211,13 @@
                       </h3>
                     </div>
                     <div class="relative w-full px-4 max-w-full flex-grow flex-1 text-right">
-                      <a
+                      <button
                         class="bg-indigo-500 text-white active:bg-indigo-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1"
-                        href="{{ route('adminManagers') }}"
+                        type="button"
                         style="transition:all .15s ease"
                       >
-                        See all
-                      </a>
+                        <i class="far fa-eye m-2"></i>See all
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -337,7 +336,7 @@
                         type="button"
                         style="transition:all .15s ease"
                       >
-                        See all
+                        <i class="far fa-eye m-2"></i>See all
                       </button>
                     </div>
                   </div>
@@ -475,10 +474,6 @@
         </div>
       </div>
     </div>
-    <script
-      src="{{ asset('js/Chart.min.js') }}"
-      charset="utf-8"
-    ></script>
-    <script src="{{ asset('js/popper.min.js') }}" charset="utf-8"></script>
+    
 
 @endsection
