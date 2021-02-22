@@ -67,4 +67,26 @@ class AdminController extends Controller
         return redirect()->back()->with('active', 'Job Opening Succesfully created');  
     }
 
+    public function closeOpening(Request $request)
+    {
+        $opening = Openings::find($request->id);
+
+        $opening->status = 'inactive';
+
+        $opening->save();
+
+        return redirect()->back()->with('active', 'Job Opening Succesfully closed');  
+    }
+
+    public function openOpening(Request $request)
+    {
+        $opening = Openings::find($request->id);
+
+        $opening->status = 'active';
+
+        $opening->save();
+
+        return redirect()->back()->with('active', 'Job Opening Succesfully opened');  
+    }
+
 }

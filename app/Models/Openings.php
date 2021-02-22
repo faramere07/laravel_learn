@@ -10,6 +10,7 @@ class Openings extends Model
     use HasFactory;
 
     protected $fillable = [
+        'id',
         'title',
         'startTime',
         'endTime',
