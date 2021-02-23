@@ -1,6 +1,18 @@
 @extends('layouts.admin')
 
 @section('content')
+
+<style>
+      .modal {
+        transition: opacity 0.25s ease;
+      }
+      body.modal-active {
+        overflow-x: hidden;
+        overflow-y: visible !important;
+      }
+
+</style>
+
 	<noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root">
       
@@ -38,7 +50,7 @@
                     </div>
                     <div class="relative w-full px-4 max-w-full flex-grow flex-1 text-right">
                       <button
-                        class="bg-indigo-500 text-white active:bg-indigo-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1"
+                        class="modal-open-manager bg-gray-700 text-white active:bg-indigo-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1"
                         type="button"
                         style="transition:all .15s ease"
                       >
@@ -67,111 +79,56 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
+                    @if($managers->count())
+                        @foreach ($managers as $manager)
+                        <tr>
                         <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-left">
-                          /argon/
+                          {{ $manager->name }}
                         </th>
                         <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
-                          4,569
+                        {{ $manager->email }}
                         </td>
-                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
-                          340
+                        <td class="border-t-0 text-base font-semibold  px-6 align-middle border-l-0 border-r-0 whitespace-no-wrap p-4">
+                          @if($manager->gender == "M") <i class="fas text-gray-600 text-lg fa-mars"></i>
+                          @else
+                          <i class="fas text-gray-600 text-lg fa-venus"></i>
+                          @endif
+                          {{ $manager->gender }}
                         </td>
-                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
-                          <i class="fas fa-arrow-up text-green-500 mr-4"></i>
-                          46,53%
-                        </td>
-                      </tr>
-                      <tr>
-                        <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-left">
-                          /argon/index.html
-                        </th>
-                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
-                          3,985
-                        </td>
-                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
-                          319
-                        </td>
-                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
-                          <i class="fas fa-arrow-down text-orange-500 mr-4"></i>
-                          46,53%
-                        </td>
-                      </tr>
-                      <tr>
-                        <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-left">
-                          /argon/charts.html
-                        </th>
-                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
-                          3,513
-                        </td>
-                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
-                          294
-                        </td>
-                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
-                          <i class="fas fa-arrow-down text-orange-500 mr-4"></i>
-                          36,49%
+                        <td>
+                          <div class="flex flex-row">
+
+                            <button
+                              class="modal-edit bg-gray-600 text-white active:bg-gray-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1"
+                              type="button"
+                              >
+                              <i class="far fa-edit m-2"></i>Edit Details
+                            </button>
+                          
+                            <form method="post" action="{{ route('closeOpening') }}">
+                              @csrf
+                              <input type="hidden" name="id" id="id" value="{{ $manager->id }}">
+                              <button
+                                onclick="return confirm('Are you sure you want to disable the Account?')"
+                                class="bg-gray-600 text-white active:bg-gray-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1"
+                                type="submit"
+                                >
+                                <i class="fas fa-user-times m-2"></i>Disable Account
+                              </button>
+                            </form>
+                          </div>
+                         
                         </td>
                       </tr>
-                      <tr>
-                        <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-left">
-                          /argon/tables.html
-                        </th>
-                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
-                          2,050
-                        </td>
-                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
-                          147
-                        </td>
-                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
-                          <i class="fas fa-arrow-up text-green-500 mr-4"></i>
-                          50,87%
-                        </td>
-                      </tr>
-                      <tr>
-                        <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-left">
-                          /argon/profile.html
-                        </th>
-                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
-                          1,795
-                        </td>
-                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
-                          190
-                        </td>
-                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
-                          <i class="fas fa-arrow-down text-red-500 mr-4"></i>
-                          46,53%
-                        </td>
-                      </tr>
-                      <tr>
-                        <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-left">
-                          /argon/profile.html
-                        </th>
-                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
-                          1,795
-                        </td>
-                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
-                          190
-                        </td>
-                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
-                          <i class="fas fa-arrow-down text-red-500 mr-4"></i>
-                          46,53%
-                        </td>
-                      </tr>
-                      <tr>
-                        <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-left">
-                          /argon/profile.html
-                        </th>
-                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
-                          1,795
-                        </td>
-                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
-                          190
-                        </td>
-                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
-                          <i class="fas fa-arrow-down text-red-500 mr-4"></i>
-                          46,53%
-                        </td>
-                      </tr>
+                      @endforeach
+
+
+
+                    @else
+                      <tr></tr>
+                    @endif
+
+
                     </tbody>
                   </table>
                 </div>
@@ -186,5 +143,48 @@
         </div>
       </div>
     </div>
+
+    @include('admin.components.modals')
+
+    <script>
+    var openmodal = document.querySelectorAll('.modal-open-manager')
+    for (var i = 0; i < openmodal.length; i++) {
+      openmodal[i].addEventListener('click', function(event){
+      event.preventDefault();
+      toggleManagerModal();
+      })
+    }
+    
+    const overlay = document.querySelector('.modal-overlay-manager')
+    overlay.addEventListener('click', toggleManagerModal)
+    
+    var closemodal = document.querySelectorAll('.modal-close-manager')
+    for (var i = 0; i < closemodal.length; i++) {
+      closemodal[i].addEventListener('click', toggleManagerModal)
+    }
+    
+    document.onkeydown = function(evt) {
+      evt = evt || window.event
+      var isEscape = false
+      if ("key" in evt) {
+      isEscape = (evt.key === "Escape" || evt.key === "Esc")
+      } else {
+      isEscape = (evt.keyCode === 27)
+      }
+      if (isEscape && document.body.classList.contains('modal-active')) {
+      toggleManagerModal();
+      }
+    };
+    
+    
+    function toggleManagerModal () {
+      const body = document.querySelector('body')
+      const modal = document.querySelector('.addManagerModal')
+      modal.classList.toggle('opacity-0')
+      modal.classList.toggle('pointer-events-none')
+      body.classList.toggle('modal-active')
+    }
+
+  </script>
 
 @endsection

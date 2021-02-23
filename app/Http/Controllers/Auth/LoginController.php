@@ -28,7 +28,7 @@ class LoginController extends Controller
 
     	if (!auth()->attempt($request->only('email', 'password'), $request->remember, $request->userType))
     	{
-    		return back()->with('status', 'Email or password is incorrect, please check your details');
+    		return back()->with('message', 'Email or password is incorrect, please check your details');
     	}
         $role = Auth::user()->userType;
     	   if($role === 'applicant')

@@ -14,6 +14,16 @@
               <div
                 class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-gray-200 border-0"
               >
+              @if (\Session::has('message'))
+                  <div class="flex content-center items-center justify-center text-white px-6 py-4 border-0 relative bg-red-500 rounded">
+                    <span class="text-xl inline-block mr-5 align-middle">
+                      <i class="fas fa-exclamation"></i>
+                    </span>
+                    <span class="inline-block align-middle mr-10">
+                      <p>{!! \Session::get('message') !!}</p>
+                    </span>
+                  </div>
+                  @endif
                 <div class="rounded-t mb-0 px-6 py-6">
                     <div class="text-gray-500 text-3xl text-center font-bold">
                     <p>Sign in</p>
@@ -21,12 +31,6 @@
                   <hr class="mt-6 border-b-1 border-gray-400" />
                 </div>
                 <div class="flex-auto px-4 lg:px-10 py-10 pt-0">
-
-                    @if (session('status'))
-                    <div class="text-red-500 mt-2 p-2 text-sm font-medium text-center">
-                        {{ session('status') }}
-                    </div>
-                    @endif
 
                   <form action="{{ route('login') }}" method="post">
                     @csrf

@@ -36,6 +36,7 @@ class RegisterController extends Controller
     		'password' => Hash::make($request->password),
     		'userType' => $request->userType,
 			'gender' => $request->gender,
+            'status' => 'active',
     	]);
 
     	auth()->attempt($request->only('email','password'));

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Openings;
+use App\Models\User;
 use Redirect;
 
 class AdminController extends Controller
@@ -20,7 +21,11 @@ class AdminController extends Controller
 
     public function managers()
     {
-    	return view('ADMIN.managers');
+        $managers = User::where('userType', 'manager')->paginate(10);
+
+    	return view('ADMIN.managers', [
+            'managers' => $managers,
+        ]);
     }
 
     public function applications()
