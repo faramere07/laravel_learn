@@ -124,7 +124,9 @@
                           <div class="flex flex-row">
 
                             <button
-                              class="bg-gray-600 text-white active:bg-gray-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1"
+                              id="{{ $opening->id }}"
+                              data-title="{{ $opening->title }}"
+                              class="modal-edit bg-gray-600 text-white active:bg-gray-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1"
                               type="button"
                               >
                               <i class="far fa-edit m-2"></i>Edit Details
@@ -135,10 +137,10 @@
                               <input type="hidden" name="id" id="id" value="{{ $opening->id }}">
                               <button
                                 onclick="return confirm('Are you sure you want to close the Job Opening?')"
-                                class="modal-open-dialog bg-gray-600 text-white active:bg-gray-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1"
+                                class="bg-gray-600 text-white active:bg-gray-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1"
                                 type="submit"
                                 >
-                                <i class="fas fa-door-closed m-2"></i>Close
+                                <i class="fas fa-door-closed m-2"></i>Close Job Opening
                               </button>
                             </form>
                           </div>
@@ -270,12 +272,12 @@
 
 
     @include('admin.components.modals')
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
     var openmodal = document.querySelectorAll('.modal-open')
     for (var i = 0; i < openmodal.length; i++) {
       openmodal[i].addEventListener('click', function(event){
-      event.preventDefault()
+      event.preventDefault();
       toggleOpeningModal();
       })
     }
@@ -310,17 +312,9 @@
       body.classList.toggle('modal-active')
     }
 
-    function closeAlert(event){
-    let element = event.target;
-    while(element.nodeName !== "BUTTON"){
-      element = element.parentNode;
-    }
-    element.parentNode.parentNode.removeChild(element.parentNode);
-    }
 
 
 
-    
      
   </script>
 
