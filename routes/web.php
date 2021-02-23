@@ -30,9 +30,11 @@ Route::get('/admin/Home', [AdminController::class, 'home'])->name('adminHome');
 Route::get('/admin/Managers', [AdminController::class, 'managers'])->name('adminManagers');
 Route::get('/admin/Applications', [AdminController::class, 'applications'])->name('adminApplications');
 Route::get('/admin/Openings', [AdminController::class, 'openings'])->name('adminOpenings');
+Route::get('/admin/ClosedOpenings', [AdminController::class, 'closedOpenings'])->name('closedOpenings');
 Route::post('/createOpening', [AdminController::class, 'createOpening'])->name('createOpening');
 Route::post('/closeOpening/', [AdminController::class, 'closeOpening'])->name('closeOpening');
 Route::post('/openOpening/', [AdminController::class, 'openOpening'])->name('openOpening');
+Route::post('/destroyOpening/', [AdminController::class, 'destroyOpening'])->name('destroyOpening');
 
 
 //manager

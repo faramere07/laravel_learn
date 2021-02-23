@@ -2,7 +2,7 @@
   <div class="openingModal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center">
     <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50"></div>
     
-    <div class="modal-container bg-white w-4/12 mx-auto rounded shadow-lg z-50 overflow-y-auto">
+    <div class="modal-container bg-white w-3/12 mx-auto rounded shadow-lg z-50 overflow-y-auto">
       
 
 

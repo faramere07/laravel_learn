@@ -45,41 +45,35 @@
                   <div class="flex flex-wrap items-center">
                     <div class="relative w-full px-4 max-w-full flex-grow flex-1">
                       <h3 class="font-semibold text-base text-gray-800">
-                        Openings - Active
-                        <i class="fas fa-check text-green-500"></i>
+                        Openings - Closed
+                        <i class="fas fa-times text-red-500"></i>
                       </h3>
                     </div>
                     <div class="relative w-full px-4 max-w-full flex-grow flex-1 text-right">
-
-                      <div class="flex-row">
-                      <button
+                      <a
+                        href="{{ route('adminOpenings') }}"
                         class="modal-open bg-transparent bg-gray-600 text-white active:bg-indigo-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1"
                         type="button"
                         style="transition:all .15s ease"
                       >
-                        <i class="fas fa-plus m-2"></i>ADD OPENING
-                      </button>
-                      <a
-                        href="{{ route('closedOpenings') }}"
-                        class="bg-transparent bg-gray-600 text-white active:bg-indigo-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1"
-                        type="button"
-                        style="transition:all .15s ease"
-                      >
-                        <i class="far fa-eye m-2"></i>VIEW CLOSED JOB OPENINGS
+                        <i class="far fa-eye m-2"></i>VIEW OPEN JOB OPENINGS
                       </a>
                     </div>
-                    </div>
+                    
                   </div>
                 </div>
+
+
+
                 <div class="block w-full overflow-x-auto">
 
-                  @if (\Session::has('active'))
+                  @if (\Session::has('inactive'))
                   <div class="text-white px-6 py-4 border-0 relative bg-blue-500">
                     <span class="text-xl inline-block mr-5 align-middle">
                       <i class="fas fa-bell"></i>
                     </span>
                     <span class="inline-block align-middle mr-8">
-                      <p>{!! \Session::get('active') !!}</p>
+                      <p>{!! \Session::get('inactive') !!}</p>
                     </span>
                   </div>
                   @endif
@@ -109,8 +103,8 @@
                       </tr>
                     </thead>
                     <tbody>
-                    @if($activeOpenings->count())
-                        @foreach ($activeOpenings as $opening)
+                    @if($inactiveOpenings->count())
+                        @foreach ($inactiveOpenings as $opening)
                         <tr>
                         <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-left">
                           {{ $opening->title }}
@@ -118,34 +112,19 @@
                         <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
                         {{ $opening->startTime }} - {{ $opening->endTime }}
                         </td>
-                        <td class="border-t-0 px-6 align-middle font-medium border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
-                          @if($opening->category == "IT") <i class="fas text-gray-600 text-lg fa-desktop"></i>
-                          @else
-                          <i class="fas text-gray-600 text-lg fa-book"></i>
-                          @endif
+                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
                         {{ Str::upper($opening->category) }}
                         </td>
-                        <td class="border-t-0 px-6 align-middle font-medium border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
-                          ₱{{  number_format($opening->salary, 0, '.', ',') }}
+                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
+                          {{  number_format($opening->salary, 0, '.', ',') }}
                         </td>
-                        <td class="border-t-0 uppercase px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
-                          @if($opening->jobType == "homebased") <i class="fas text-gray-600 text-lg fa-home"></i>
-                          @else
-                          <i class="fas text-gray-600 text-lg fa-building"></i>
-                          @endif
+                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
                           {{ $opening->jobType }}
                         </td>
                         <td>
                           <div class="flex flex-row">
-
-                            <button
-                              class="modal-edit bg-gray-600 text-white active:bg-gray-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1"
-                              type="button"
-                              >
-                              <i class="far fa-edit m-2"></i>Edit Details
-                            </button>
                           
-                            <form method="post" action="{{ route('closeOpening') }}">
+                            <form method="post" action="{{ route('openOpening') }}">
                               @csrf
                               <input type="hidden" name="id" id="id" value="{{ $opening->id }}">
                               <button
@@ -153,7 +132,7 @@
                                 class="bg-gray-600 text-white active:bg-gray-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1"
                                 type="submit"
                                 >
-                                <i class="fas fa-door-closed m-2"></i>Close Job Opening
+                                <i class="fas fa-door-closed m-2"></i>Open Job Opening
                               </button>
                             </form>
                           </div>
@@ -174,7 +153,7 @@
                 </div>
               </div>
                <div>
-              {{ $activeOpenings->links() }}
+              {{ $inactiveOpenings->links() }}
             </div>
             </div>
 
@@ -190,46 +169,5 @@
     </div>
 
 
-    @include('admin.components.modals')
-    <script>
-    var openmodal = document.querySelectorAll('.modal-open')
-    for (var i = 0; i < openmodal.length; i++) {
-      openmodal[i].addEventListener('click', function(event){
-      event.preventDefault();
-      toggleOpeningModal();
-      })
-    }
-    
-    const overlay = document.querySelector('.modal-overlay')
-    overlay.addEventListener('click', toggleOpeningModal)
-    
-    var closemodal = document.querySelectorAll('.modal-close')
-    for (var i = 0; i < closemodal.length; i++) {
-      closemodal[i].addEventListener('click', toggleOpeningModal)
-    }
-    
-    document.onkeydown = function(evt) {
-      evt = evt || window.event
-      var isEscape = false
-      if ("key" in evt) {
-      isEscape = (evt.key === "Escape" || evt.key === "Esc")
-      } else {
-      isEscape = (evt.keyCode === 27)
-      }
-      if (isEscape && document.body.classList.contains('modal-active')) {
-      toggleOpeningModal();
-      }
-    };
-    
-    
-    function toggleOpeningModal () {
-      const body = document.querySelector('body')
-      const modal = document.querySelector('.openingModal')
-      modal.classList.toggle('opacity-0')
-      modal.classList.toggle('pointer-events-none')
-      body.classList.toggle('modal-active')
-    }
-
-  </script>
 
 @endsection

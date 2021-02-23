@@ -30,12 +30,18 @@ class AdminController extends Controller
 
     public function openings()
     {
-        $activeOpenings = Openings::where('status', 'active')->get();
-
-        $inactiveOpenings = Openings::where('status', 'inactive')->get();
+        $activeOpenings = Openings::where('status', 'active')->paginate(10);
 
         return view('ADMIN.openings', [
             'activeOpenings' => $activeOpenings,
+        ]);
+    }
+
+    public function closedOpenings()
+    {
+        $inactiveOpenings = Openings::where('status', 'inactive')->paginate(10);
+
+        return view('ADMIN.closedOpenings', [
             'inactiveOpenings' => $inactiveOpenings,
         ]);
     }
@@ -87,6 +93,15 @@ class AdminController extends Controller
         $opening->save();
 
         return redirect()->back()->with('active', 'Job Opening Succesfully opened');  
+    }
+
+    public function destroyOpening(Request $request)
+    {
+        $opening = Openings::find($request->id);
+
+        $opening->delete();
+
+        return redirect()->back()->with('inactive', 'Job Opening Succesfully Deleted');  
     }
 
 }
