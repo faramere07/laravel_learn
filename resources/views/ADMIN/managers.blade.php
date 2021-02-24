@@ -49,6 +49,8 @@
                       </h3>
                     </div>
                     <div class="relative w-full px-4 max-w-full flex-grow flex-1 text-right">
+
+                      <div class="flex-row">
                       <button
                         class="modal-open-manager bg-gray-700 text-white active:bg-indigo-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1"
                         type="button"
@@ -57,9 +59,24 @@
                         <i class="fas fa-user-plus m-2"></i>ADD MANAGER
                       </button>
                     </div>
+                    </div>
                   </div>
                 </div>
                 <div class="block w-full overflow-x-auto">
+
+                  @if (\Session::has('message'))
+                  <div class="text-white px-6 py-4 border-0 relative bg-blue-500">
+                    <span class="text-xl inline-block mr-5 align-middle">
+                      <i class="fas fa-bell"></i>
+                    </span>
+                    <span class="inline-block align-middle mr-8">
+                      <p>{!! \Session::get('message') !!}</p>
+                    </span>
+                  </div>
+                  @endif
+
+
+
                   <!-- Projects table -->
                   <table class="items-center w-full bg-transparent border-collapse">
                     <thead>
@@ -74,6 +91,9 @@
                           gender
                         </th>
                         <th class="px-6 bg-gray-100 text-gray-600 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-left">
+                          Status
+                        </th>
+                        <th class="px-6 bg-gray-100 text-gray-600 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-left">
                           action
                         </th>
                       </tr>
@@ -82,40 +102,68 @@
                     @if($managers->count())
                         @foreach ($managers as $manager)
                         <tr>
-                        <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-left">
+                        <th class="border-t-0 px-6 uppercase align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-left">
                           {{ $manager->name }}
                         </th>
                         <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
                         {{ $manager->email }}
                         </td>
-                        <td class="border-t-0 text-base font-semibold  px-6 align-middle border-l-0 border-r-0 whitespace-no-wrap p-4">
+                        <td class="border-t-0 text-base font-medium  px-6 align-middle border-l-0 border-r-0 whitespace-no-wrap p-4">
                           @if($manager->gender == "M") <i class="fas text-gray-600 text-lg fa-mars"></i>
                           @else
                           <i class="fas text-gray-600 text-lg fa-venus"></i>
                           @endif
                           {{ $manager->gender }}
                         </td>
+                        <td class="border-t-0 text-base font-medium px-6 align-middle border-l-0 border-r-0 whitespace-no-wrap p-4">
+                          @if($manager->status == "enabled") <i class="fas text-green-500 text-lg fa-check"></i>
+                          @else
+                          <i class="fas text-red-500 text-lg fa-times"></i>
+                          @endif
+                          {{ $manager->status }}
+                        </td>
                         <td>
+
+
+
                           <div class="flex flex-row">
 
                             <button
                               class="modal-edit bg-gray-600 text-white active:bg-gray-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1"
                               type="button"
                               >
-                              <i class="far fa-edit m-2"></i>Edit Details
+                              <i class="far fa-envelope m-2"></i>Message
                             </button>
+
+                            @if($manager->status == "enabled")
                           
-                            <form method="post" action="{{ route('closeOpening') }}">
+                            <form method="post" action="{{ route('disableAccount') }}">
                               @csrf
                               <input type="hidden" name="id" id="id" value="{{ $manager->id }}">
                               <button
-                                onclick="return confirm('Are you sure you want to disable the Account?')"
-                                class="bg-gray-600 text-white active:bg-gray-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1"
+                                onclick="return confirm('Are you sure you want to disable this Account? The manager will not be able to log in within the system and use its functionalities')"
+                                class="bg-red-500 text-white active:bg-gray-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1"
                                 type="submit"
                                 >
                                 <i class="fas fa-user-times m-2"></i>Disable Account
                               </button>
                             </form>
+
+                            @else
+
+
+                            <form method="post" action="{{ route('enableAccount') }}">
+                              @csrf
+                              <input type="hidden" name="id" id="id" value="{{ $manager->id }}">
+                              <button
+                                onclick="return confirm('Are you sure you want to enable this Account?')"
+                                class="bg-green-500 text-white active:bg-gray-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1"
+                                type="submit"
+                                >
+                                <i class="fas fa-user-check m-2"></i>Enable Account
+                              </button>
+                            </form>
+                            @endif
                           </div>
                          
                         </td>
@@ -133,7 +181,9 @@
                   </table>
                 </div>
               </div>
+               {{ $managers->links() }}
             </div>
+           
           </div>
           <div class="flex flex-wrap mt-12">
             

@@ -19,7 +19,7 @@ class AuthAdmin
     {
         if (Auth::check()) {
     // The user is logged in...
-            if(Auth::user()->userType == 'admin' && Auth::user()->status == 'active')
+            if(Auth::user()->userType == 'admin' && Auth::user()->status == 'enabled')
             {
                 return $next($request);
             }

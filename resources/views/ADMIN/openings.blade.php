@@ -53,7 +53,7 @@
 
                       <div class="flex-row">
                       <button
-                        class="modal-open bg-transparent bg-gray-600 text-white active:bg-indigo-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1"
+                        class="modal-open bg-transparent bg-gray-700 text-white active:bg-indigo-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1"
                         type="button"
                         style="transition:all .15s ease"
                       >
@@ -61,7 +61,7 @@
                       </button>
                       <a
                         href="{{ route('closedOpenings') }}"
-                        class="bg-transparent bg-gray-600 text-white active:bg-indigo-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1"
+                        class="bg-transparent bg-gray-700 text-white active:bg-indigo-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1"
                         type="button"
                         style="transition:all .15s ease"
                       >
@@ -126,7 +126,11 @@
                         {{ Str::upper($opening->category) }}
                         </td>
                         <td class="border-t-0 px-6 align-middle font-medium border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
+
+                          @if($opening->salary === 'N/A') N/A
+                          @else
                           ₱{{  number_format($opening->salary, 0, '.', ',') }}
+                          @endif
                         </td>
                         <td class="border-t-0 uppercase px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
                           @if($opening->jobType == "homebased") <i class="fas text-gray-600 text-lg fa-home"></i>

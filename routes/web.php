@@ -35,6 +35,9 @@ Route::post('/createOpening', [AdminController::class, 'createOpening'])->name('
 Route::post('/closeOpening/', [AdminController::class, 'closeOpening'])->name('closeOpening');
 Route::post('/openOpening/', [AdminController::class, 'openOpening'])->name('openOpening');
 Route::post('/destroyOpening/', [AdminController::class, 'destroyOpening'])->name('destroyOpening');
+Route::post('/createManager/', [AdminController::class, 'createManager'])->name('createManager');
+Route::post('/disableAccount/', [AdminController::class, 'disableAccount'])->name('disableAccount');
+Route::post('/enableAccount/', [AdminController::class, 'enableAccount'])->name('enableAccount');
 
 
 //manager

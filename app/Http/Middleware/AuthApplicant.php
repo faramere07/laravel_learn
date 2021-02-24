@@ -19,7 +19,7 @@ class AuthApplicant
     {
         if (Auth::check()) {
     // The user is logged in...
-            if(Auth::user()->userType == 'applicant' && Auth::user()->status == 'active')
+            if(Auth::user()->userType == 'applicant' && Auth::user()->status == 'enabled')
             {
                 return $next($request);
             }

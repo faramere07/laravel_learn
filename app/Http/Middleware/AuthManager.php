@@ -19,7 +19,7 @@ class AuthManager
     {
         if (Auth::check()) {
     // The user is logged in...
-            if(Auth::user()->userType == 'manager' && Auth::user()->status == 'active')
+            if(Auth::user()->userType == 'manager' && Auth::user()->status == 'enabled')
             {
                 return $next($request);
             }

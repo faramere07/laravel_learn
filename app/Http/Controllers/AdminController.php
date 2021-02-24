@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Openings;
 use App\Models\User;
 use Redirect;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
@@ -59,7 +60,6 @@ class AdminController extends Controller
             'endTime' => 'required',
             'category' => 'required|max:255',
             'description' => 'required|max:255',
-            'salary' => 'required|max:255',
             'jobType' => 'required|max:255',
             'status' => 'required|max:255',
         ]);
@@ -71,7 +71,7 @@ class AdminController extends Controller
             'category' => $request->category,
             'description' => $request->description,
             'jobType' => $request->jobType,
-            'salary' => $request->salary,
+            'salary' => $request->salary ?? "N/A",
             'status' => $request->status,
         ]);
 
@@ -107,6 +107,52 @@ class AdminController extends Controller
         $opening->delete();
 
         return redirect()->back()->with('inactive', 'Job Opening Succesfully Deleted');  
+    }
+
+    public function createManager(Request $request)
+    {
+
+        $this->validate($request, [
+            'name' => 'required|max:255',
+            'gender' => 'required|max:1|min:1',
+            'username' => 'required|max:255|unique:users',
+            'email' => 'required|max:255|email|unique:users',
+            'password' => 'required|min:8',
+        ]);
+
+        User::create([
+            'name' => $request->name,
+            'username' => $request->username,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'userType' => $request->userType,
+            'gender' => $request->gender,
+            'status' => 'enabled',
+        ]);
+
+        return redirect()->back()->with('message', 'Manager Account Successfully created');  
+    }
+
+    public function disableAccount(Request $request)
+    {
+        $user = User::find($request->id);
+
+        $user->status = 'disabled';
+
+        $user->save();
+
+        return redirect()->back()->with('message', 'Manager Account has been successfully disabled');  
+    }
+
+    public function enableAccount(Request $request)
+    {
+        $user = User::find($request->id);
+
+        $user->status = 'enabled';
+
+        $user->save();
+
+        return redirect()->back()->with('message', 'Manager Account has been successfully enabled');  
     }
 
 }
