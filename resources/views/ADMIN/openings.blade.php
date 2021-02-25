@@ -119,9 +119,9 @@
                         {{ $opening->startTime }} - {{ $opening->endTime }}
                         </td>
                         <td class="border-t-0 px-6 align-middle font-medium border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
-                          @if($opening->category == "IT") <i class="fas text-gray-600 text-lg fa-desktop"></i>
+                          @if($opening->category == "IT") <i class="fas text-gray-600 text-sm fa-desktop"></i>
                           @else
-                          <i class="fas text-gray-600 text-lg fa-book"></i>
+                          <i class="fas text-gray-600 text-sm fa-book"></i>
                           @endif
                         {{ Str::upper($opening->category) }}
                         </td>
@@ -133,9 +133,9 @@
                           @endif
                         </td>
                         <td class="border-t-0 uppercase px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
-                          @if($opening->jobType == "homebased") <i class="fas text-gray-600 text-lg fa-home"></i>
+                          @if($opening->jobType == "homebased") <i class="fas text-gray-600 text-sm fa-home"></i>
                           @else
-                          <i class="fas text-gray-600 text-lg fa-building"></i>
+                          <i class="fas text-gray-600 text-sm fa-building"></i>
                           @endif
                           {{ $opening->jobType }}
                         </td>

@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('userType');
             $table->string('gender');
             $table->string('status');
+            $table->string('Mtype')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

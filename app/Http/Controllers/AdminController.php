@@ -22,7 +22,7 @@ class AdminController extends Controller
 
     public function managers()
     {
-        $managers = User::where('userType', 'manager')->paginate(10);
+        $managers = User::orderBy('name', 'ASC')->where('userType', 'manager')->paginate(10);
 
     	return view('ADMIN.managers', [
             'managers' => $managers,
@@ -114,6 +114,7 @@ class AdminController extends Controller
 
         $this->validate($request, [
             'name' => 'required|max:255',
+            'Mtype' => 'required|max:255',
             'gender' => 'required|max:1|min:1',
             'username' => 'required|max:255|unique:users',
             'email' => 'required|max:255|email|unique:users',
@@ -127,6 +128,7 @@ class AdminController extends Controller
             'password' => Hash::make($request->password),
             'userType' => $request->userType,
             'gender' => $request->gender,
+            'Mtype' => $request->Mtype,
             'status' => 'enabled',
         ]);
 
@@ -153,6 +155,15 @@ class AdminController extends Controller
         $user->save();
 
         return redirect()->back()->with('message', 'Manager Account has been successfully enabled');  
+    }
+
+    public function deleteManagerAccount(Request $request)
+    {
+        $user = User::find($request->id);
+
+        $user->delete();
+
+        return redirect()->back()->with('message', 'Manager Account has been successfully deleted');  
     }
 
 }

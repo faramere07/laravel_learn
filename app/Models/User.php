@@ -24,6 +24,7 @@ class User extends Authenticatable
         'userType',
         'gender',
         'status',
+        'Mtype',
     ];
 
     /**

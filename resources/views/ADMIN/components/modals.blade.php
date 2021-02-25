@@ -187,13 +187,13 @@
                           </div>
                     @enderror
                         </div>
-                        <div class="row-span-3 ...">
-                        @error('gender')
+                    <div class="row-span-3 ...">
+                    @error('gender')
                           <div class="text-red-500 mt-2 text-sm">
                             {{ $message }}
                           </div>
                     @enderror
-                        </div>
+                    </div>
                     </div> 
 
 
@@ -206,28 +206,53 @@
                             value="{{ old('username') }}" 
                             placeholder="Username" />   
                         </div>
-                        <div class="row-span-3 ...">
+                    <div class="row-span-3 ...">
 
-                    <select class="block  border border-grey-light text-gray-500 w-full p-3 rounded mb-4" name="gender" id="gender">
-                      <option disabled selected value="">Select Gender</option>
-                      <option value="M">Male</option>
-                      <option value="F">Female</option>
-                    </select>
-                        </div>
+                          <select class="block  border border-grey-light text-gray-500 w-full p-3 rounded mb-4" name="gender" id="gender">
+                            <option disabled selected value="">Select Gender</option>
+                            <option value="M">Male</option>
+                            <option value="F">Female</option>
+                          </select>
+                    </div>
                     </div> 
 
+                    <div class="grid grid-rows-3 grid-flow-col">
+                    <div class="row-span-3">
                     @error('email')
                           <div class="text-red-500 mt-2 text-sm">
                             {{ $message }}
                           </div>
                     @enderror
+                        </div>
+                    <div class="row-span-3 ...">
+                    @error('Mtype')
+                          <div class="text-red-500 mt-2 text-sm">
+                            {{ $message }}
+                          </div>
+                    @enderror
+                    </div>
+                    </div> 
 
+
+                    <div class="grid grid-rows-3 grid-flow-col gap-4">
+                    <div class="row-span-3">
                     <input 
                         type="text"
                         class="block border border-grey-light w-full p-3 rounded mb-4"
                         name="email"
                         value="{{ old('email') }}" 
                         placeholder="Email" />
+                      </div>
+
+                    <div class="row-span-3 ...">
+
+                          <select class="block border border-grey-light text-gray-500 w-full p-3 rounded mb-4" name="Mtype" id="Mtype">
+                            <option disabled selected value="">Manager Type</option>
+                            <option value="it">IT Manager</option>
+                            <option value="tutor">Tutor Manager</option>
+                          </select>
+                    </div>
+                    </div>
 
                     @error('password')
                           <div class="text-red-500 mt-2 text-sm">
@@ -240,10 +265,10 @@
                         readonly 
                         class="bg-gray-200 block border border-grey-light w-full p-3 rounded mb-4"
                         name="password"
-                        value="WecansManager" />
+                        value="WecansManager2020" />
 
                     <input 
-                        value="WecansManager" 
+                        value="WecansManager2020" 
                         type="hidden"
                         name="password_confirmation"
                         placeholder="Confirm Password" />

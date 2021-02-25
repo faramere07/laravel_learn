@@ -113,12 +113,23 @@
                         {{ $opening->startTime }} - {{ $opening->endTime }}
                         </td>
                         <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
+                        @if($opening->category == "IT") <i class="fas text-gray-600 text-sm fa-desktop"></i>
+                          @else
+                          <i class="fas text-gray-600 text-sm fa-book"></i>
+                          @endif
                         {{ Str::upper($opening->category) }}
                         </td>
                         <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
-                          {{  number_format($opening->salary, 0, '.', ',') }}
+                          @if($opening->salary === 'N/A') N/A
+                          @else
+                          ₱{{  number_format($opening->salary, 0, '.', ',') }}
+                          @endif
                         </td>
                         <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
+                          @if($opening->jobType == "homebased") <i class="fas text-gray-600 text-sm fa-home"></i>
+                          @else
+                          <i class="fas text-gray-600 text-sm fa-building"></i>
+                          @endif
                           {{ $opening->jobType }}
                         </td>
                         <td>

@@ -45,7 +45,7 @@
                   <div class="flex flex-wrap items-center">
                     <div class="relative w-full px-4 max-w-full flex-grow flex-1">
                       <h3 class="font-semibold text-base text-gray-800">
-                        Managers
+                        Managers List
                       </h3>
                     </div>
                     <div class="relative w-full px-4 max-w-full flex-grow flex-1 text-right">
@@ -109,16 +109,16 @@
                         {{ $manager->email }}
                         </td>
                         <td class="border-t-0 text-base font-medium  px-6 align-middle border-l-0 border-r-0 whitespace-no-wrap p-4">
-                          @if($manager->gender == "M") <i class="fas text-gray-600 text-lg fa-mars"></i>
+                          @if($manager->gender == "M") <i class="fas text-gray-600 text-sm fa-mars"></i>
                           @else
-                          <i class="fas text-gray-600 text-lg fa-venus"></i>
+                          <i class="fas text-gray-600 text-sm fa-venus"></i>
                           @endif
                           {{ $manager->gender }}
                         </td>
                         <td class="border-t-0 text-base font-medium px-6 align-middle border-l-0 border-r-0 whitespace-no-wrap p-4">
-                          @if($manager->status == "enabled") <i class="fas text-green-500 text-lg fa-check"></i>
+                          @if($manager->status == "enabled") <i class="fas text-green-500 text-sm m-2 fa-check"></i>
                           @else
-                          <i class="fas text-red-500 text-lg fa-times"></i>
+                          <i class="fas text-red-500 text-sm m-2 fa-times"></i>
                           @endif
                           {{ $manager->status }}
                         </td>
@@ -126,7 +126,7 @@
 
 
 
-                          <div class="flex flex-row">
+                          <div class="flex md:flex-row">
 
                             <button
                               class="modal-edit bg-gray-600 text-white active:bg-gray-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1"
@@ -161,6 +161,18 @@
                                 type="submit"
                                 >
                                 <i class="fas fa-user-check m-2"></i>Enable Account
+                              </button>
+                            </form>
+
+                            <form method="post" action="{{ route('deleteManagerAccount') }}">
+                              @csrf
+                              <input type="hidden" name="id" id="id" value="{{ $manager->id }}">
+                              <button
+                                onclick="return confirm('Are you sure you want to enable this Account?')"
+                                class="bg-red-500 text-white active:bg-gray-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1"
+                                type="submit"
+                                >
+                                <i class="fas fa-trash-alt m-2"></i>Delete Account
                               </button>
                             </form>
                             @endif
