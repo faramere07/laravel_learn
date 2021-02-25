@@ -59,7 +59,7 @@ class AdminController extends Controller
             'startTime' => 'required',
             'endTime' => 'required',
             'category' => 'required|max:255',
-            'description' => 'required|max:255',
+            'description' => 'required|max:3000',
             'jobType' => 'required|max:255',
             'status' => 'required|max:255',
         ]);

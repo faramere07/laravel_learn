@@ -320,7 +320,7 @@
               <div class="px-6">
                 <img
                   alt="..."
-                  src="{{ asset('assets/img/dustin.png') }}"
+                  src="{{ asset('assets/img/dustin.jpg') }}"
                   class="shadow-lg rounded-full max-w-full mx-auto"
                   style="max-width: 120px;"
                 />

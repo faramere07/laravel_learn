@@ -19,7 +19,7 @@ class CreateOpeningsTable extends Migration
             $table->string('startTime');
             $table->string('endTime');
             $table->string('category');
-            $table->string('description');
+            $table->string('description', 2000);
             $table->string('salary');
             $table->string('jobType');
             $table->string('status');
