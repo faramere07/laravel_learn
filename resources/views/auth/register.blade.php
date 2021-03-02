@@ -92,6 +92,19 @@
                         value="{{ old('email') }}" 
                         placeholder="Email" />
 
+                    @error('contact')
+                            <div class="text-red-500 mt-2 text-sm">
+                                {{ $message }}
+                            </div>
+                    @enderror
+
+                    <input 
+                        type="text"
+                        class="block border border-grey-light w-full p-3 rounded mb-4"
+                        name="contact"
+                        value="{{ old('contact') }}" 
+                        placeholder="Contact no." />
+
                     @error('password')
                         	<div class="text-red-500 mt-2 text-sm">
                         		{{ $message }}

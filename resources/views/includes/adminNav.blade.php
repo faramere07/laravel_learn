@@ -28,9 +28,9 @@
                   class="text-gray-800 hover:text-pink-600 text-xs uppercase py-3 font-bold block"
                   href="{{ route('adminHome') }}"
                   ><i class="fas fa-tv opacity-75 mr-2 text-sm"></i>
-                  Dashboard</a>
+                  Posts</a>
               </li>
-              <li class="items-center">
+              <!-- <li class="items-center">
                 <a
                   class="text-gray-800 hover:text-pink-600 text-xs uppercase py-3 font-bold block"
                   href="{{ route('adminApplications') }}"
@@ -51,7 +51,7 @@
                   href="{{ route('adminManagers') }}"
                   ><i class="fas fa-user-circle text-gray-500 mr-2 text-sm"></i>
                   Managers</a>
-              </li>
+              </li> -->
             </ul>
             <hr class="my-4 md:min-w-full" />
             <h6

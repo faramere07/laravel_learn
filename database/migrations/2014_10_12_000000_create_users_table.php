@@ -24,6 +24,7 @@ class CreateUsersTable extends Migration
             $table->string('gender');
             $table->string('status');
             $table->string('Mtype')->nullable();
+            $table->string('contact')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

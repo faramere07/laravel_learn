@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Openings;
+use App\Models\Posts;
 use App\Models\User;
 use Redirect;
 use Illuminate\Support\Facades\Hash;
@@ -16,8 +17,9 @@ class AdminController extends Controller
 	}
 
     public function home()
-    {
-    	return view('ADMIN.home');
+    {   
+        $activePosts = Posts::where('status', 'active')->paginate(10);
+    	return view('ADMIN.home', ['activePosts' => $activePosts]);
     }
 
     public function managers()
@@ -52,118 +54,159 @@ class AdminController extends Controller
         ]);
     }
 
-    public function createOpening(Request $request)
+    public function createPost()
     {
+        return view('ADMIN.posts');
+    }
+
+
+    public function storePost(Request $request)
+    {
+
         $this->validate($request, [
-            'title' => 'required|max:255',
-            'startTime' => 'required',
-            'endTime' => 'required',
-            'category' => 'required|max:255',
-            'description' => 'required|max:3000',
-            'jobType' => 'required|max:255',
-            'status' => 'required|max:255',
+            'title' => 'required|max:200',
+            'subtitle' => 'required',
+            'category' => 'required',
+            'description' => 'required',
         ]);
 
-        Openings::updateOrCreate([
+            Posts::updateOrCreate([
             'title' => $request->title,
-            'startTime' => date("h:i a", strtotime($request->startTime)),
-            'endTime' => date("h:i a", strtotime($request->endTime)),
-            'category' => $request->category,
+            'subtitle' => $request->subtitle,
             'description' => $request->description,
-            'jobType' => $request->jobType,
-            'salary' => $request->salary ?? "N/A",
-            'status' => $request->status,
+            'category' => $request->category,
+            'status' => 'active',
         ]);
-
-        return redirect()->back()->with('active', 'Job Opening Succesfully created');  
+            return redirect()->route('adminHome')->with('message', 'Post have been successfully created!');
     }
 
-    public function closeOpening(Request $request)
+    public function postDetails(Request $request)
     {
-        $opening = Openings::find($request->id);
-
-        $opening->status = 'inactive';
-
-        $opening->save();
-
-        return redirect()->back()->with('active', 'Job Opening Succesfully closed');  
-    }
-
-    public function openOpening(Request $request)
-    {
-        $opening = Openings::find($request->id);
-
-        $opening->status = 'active';
-
-        $opening->save();
-
-        return redirect()->back()->with('active', 'Job Opening Succesfully opened');  
-    }
-
-    public function destroyOpening(Request $request)
-    {
-        $opening = Openings::find($request->id);
-
-        $opening->delete();
-
-        return redirect()->back()->with('inactive', 'Job Opening Succesfully Deleted');  
-    }
-
-    public function createManager(Request $request)
-    {
-
-        $this->validate($request, [
-            'name' => 'required|max:255',
-            'Mtype' => 'required|max:255',
-            'gender' => 'required|max:1|min:1',
-            'username' => 'required|max:255|unique:users',
-            'email' => 'required|max:255|email|unique:users',
-            'password' => 'required|min:8',
+        $postDetails = Posts::find($request->id);
+        return view('ADMIN.postDetails', [
+            'postDetails' => $postDetails,
         ]);
-
-        User::create([
-            'name' => $request->name,
-            'username' => $request->username,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-            'userType' => $request->userType,
-            'gender' => $request->gender,
-            'Mtype' => $request->Mtype,
-            'status' => 'enabled',
-        ]);
-
-        return redirect()->back()->with('message', 'Manager Account Successfully created');  
     }
 
-    public function disableAccount(Request $request)
-    {
-        $user = User::find($request->id);
+    // public function createOpening(Request $request)
+    // {
+    //     $this->validate($request, [
+    //         'title' => 'required|max:255',
+    //         'startTime' => 'required',
+    //         'endTime' => 'required',
+    //         'category' => 'required|max:255',
+    //         'description' => 'required',
+    //         'jobType' => 'required|max:255',
+    //         'status' => 'required|max:255',
+    //     ]);
 
-        $user->status = 'disabled';
 
-        $user->save();
+    //     //check if the data exists on the database
+    //     $opening = Openings::where('title', $request->title)->where('startTime', $request->startTime)->where('endTime', $request->endTime);
 
-        return redirect()->back()->with('message', 'Manager Account has been successfully disabled');  
-    }
+    //     if($opening == null){
+    //         Openings::updateOrCreate([
+    //         'title' => $request->title,
+    //         'startTime' => date("h:i a", strtotime($request->startTime)),
+    //         'endTime' => date("h:i a", strtotime($request->endTime)),
+    //         'category' => $request->category,
+    //         'description' => $request->description,
+    //         'jobType' => $request->jobType,
+    //         'salary' => $request->salary ?? "N/A",
+    //         'status' => $request->status,
+    //     ]);
+    //     return redirect()->back()->with('active', 'Job Opening Succesfully created');  
+    //     } else{
+    //         return redirect()->back()->with('error', 'Job Opening already exists'); 
+    //     }
+    // }
 
-    public function enableAccount(Request $request)
-    {
-        $user = User::find($request->id);
+    // public function closeOpening(Request $request)
+    // {
+    //     $opening = Openings::find($request->id);
 
-        $user->status = 'enabled';
+    //     $opening->status = 'inactive';
 
-        $user->save();
+    //     $opening->save();
 
-        return redirect()->back()->with('message', 'Manager Account has been successfully enabled');  
-    }
+    //     return redirect()->back()->with('active', 'Job Opening Succesfully closed');  
+    // }
 
-    public function deleteManagerAccount(Request $request)
-    {
-        $user = User::find($request->id);
+    // public function openOpening(Request $request)
+    // {
+    //     $opening = Openings::find($request->id);
 
-        $user->delete();
+    //     $opening->status = 'active';
 
-        return redirect()->back()->with('message', 'Manager Account has been successfully deleted');  
-    }
+    //     $opening->save();
+
+    //     return redirect()->back()->with('active', 'Job Opening Succesfully opened');  
+    // }
+
+    // public function destroyOpening(Request $request)
+    // {
+    //     $opening = Openings::find($request->id);
+
+    //     $opening->delete();
+
+    //     return redirect()->back()->with('inactive', 'Job Opening Succesfully Deleted');  
+    // }
+
+    // public function createManager(Request $request)
+    // {
+
+    //     $this->validate($request, [
+    //         'name' => 'required|max:255',
+    //         'Mtype' => 'required|max:255',
+    //         'gender' => 'required|max:1|min:1',
+    //         'username' => 'required|max:255|unique:users',
+    //         'email' => 'required|max:255|email|unique:users',
+    //         'password' => 'required|min:8',
+    //     ]);
+
+    //     User::create([
+    //         'name' => $request->name,
+    //         'username' => $request->username,
+    //         'email' => $request->email,
+    //         'password' => Hash::make($request->password),
+    //         'userType' => $request->userType,
+    //         'gender' => $request->gender,
+    //         'Mtype' => $request->Mtype,
+    //         'status' => 'enabled',
+    //     ]);
+
+    //     return redirect()->back()->with('message', 'Manager Account Successfully created');  
+    // }
+
+    // public function disableAccount(Request $request)
+    // {
+    //     $user = User::find($request->id);
+
+    //     $user->status = 'disabled';
+
+    //     $user->save();
+
+    //     return redirect()->back()->with('message', 'Manager Account has been successfully disabled');  
+    // }
+
+    // public function enableAccount(Request $request)
+    // {
+    //     $user = User::find($request->id);
+
+    //     $user->status = 'enabled';
+
+    //     $user->save();
+
+    //     return redirect()->back()->with('message', 'Manager Account has been successfully enabled');  
+    // }
+
+    // public function deleteManagerAccount(Request $request)
+    // {
+    //     $user = User::find($request->id);
+
+    //     $user->delete();
+
+    //     return redirect()->back()->with('message', 'Manager Account has been successfully deleted');  
+    // }
 
 }

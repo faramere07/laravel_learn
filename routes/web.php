@@ -39,6 +39,9 @@ Route::post('/createManager/', [AdminController::class, 'createManager'])->name(
 Route::post('/disableAccount/', [AdminController::class, 'disableAccount'])->name('disableAccount');
 Route::post('/deleteManagerAccount/', [AdminController::class, 'deleteManagerAccount'])->name('deleteManagerAccount');
 Route::post('/enableAccount/', [AdminController::class, 'enableAccount'])->name('enableAccount');
+Route::get('/create/Post', [AdminController::class, 'createPost'])->name('createPost');
+Route::post('/storePost/', [AdminController::class, 'storePost'])->name('storePost');
+Route::post('/postDetails/', [AdminController::class, 'postDetails'])->name('postDetails');
 
 
 //manager

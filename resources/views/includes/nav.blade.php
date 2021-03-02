@@ -18,14 +18,14 @@
 		</ul>
 
 		<ul class="flex items-center">
-			@guest
+			<!-- @guest
 				<li>
 					<a href="{{ route('login') }}" class="p-4 text-lg">Login</a>
 				</li>
 				<li>
 					<a href="{{ route('register') }}" class="p-4 text-lg">Register</a>
 				</li>
-			@endguest
+			@endguest -->
 			
 		</ul>
 

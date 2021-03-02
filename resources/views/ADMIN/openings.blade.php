@@ -84,6 +84,17 @@
                   </div>
                   @endif
 
+                  @if (\Session::has('error'))
+                  <div class="text-white px-6 py-4 border-0 relative bg-red-500">
+                    <span class="text-xl inline-block mr-5 align-middle">
+                      <i class="fas fa-bell"></i>
+                    </span>
+                    <span class="inline-block align-middle mr-8">
+                      <p>{!! \Session::get('error') !!}</p>
+                    </span>
+                  </div>
+                  @endif
+
                   <!-- Projects table -->
                   <table class="items-center w-full bg-transparent border-collapse">
                     <thead>
